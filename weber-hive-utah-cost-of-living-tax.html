@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheap on Paper — What Utah's Low-Tax Rankings Don't Show You — The Weber County Hive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0F1B2E;
+    --navy-deep:#0A1220;
+    --ivory:#F3EEDF;
+    --ivory-dim:#D9D2BC;
+    --gold:#C9A24B;
+    --gold-soft:#B8956A;
+    --rule:#3A4258;
+    --red:#B14A3A;
+    --green:#4E7C55;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--navy);
+    background-image:radial-gradient(circle at 20% 0%, rgba(201,162,75,0.06), transparent 45%),
+      radial-gradient(circle at 90% 100%, rgba(201,162,75,0.04), transparent 50%);
+    color:var(--ivory);
+    font-family:'Source Serif 4', Georgia, serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+
+  .masthead{
+    max-width:820px;
+    margin:0 auto;
+    padding:64px 28px 40px;
+    border-bottom:2px solid var(--gold);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 14px;
+  }
+  .masthead h1{
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:clamp(32px,5.5vw,52px);
+    line-height:1.08;
+    margin:0 0 18px;
+    font-weight:700;
+    color:var(--ivory);
+  }
+  .dek{
+    max-width:62ch;
+    font-size:19px;
+    line-height:1.65;
+    color:var(--ivory-dim);
+    margin:0 0 20px;
+  }
+  .byline{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold-soft);
+    letter-spacing:0.04em;
+  }
+
+  main{max-width:820px;margin:0 auto;padding:44px 28px 100px;}
+
+  .lede{
+    font-size:19px;
+    line-height:1.75;
+    color:var(--ivory);
+    margin-bottom:34px;
+  }
+  .lede p{margin:0 0 18px;}
+
+  section.chapter{margin-bottom:48px;}
+  section.chapter h2{
+    font-family:'Playfair Display', Georgia, serif;
+    font-size:26px;
+    color:var(--gold);
+    border-bottom:1px solid var(--rule);
+    padding-bottom:12px;
+    margin:0 0 20px;
+    font-weight:700;
+  }
+  section.chapter p{
+    font-size:17px;
+    line-height:1.75;
+    color:var(--ivory);
+    margin:0 0 16px;
+  }
+  section.chapter p:last-child{margin-bottom:0;}
+
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:14px;
+    margin:22px 0 26px;
+  }
+  .stat-cell{
+    background:rgba(201,162,75,0.06);
+    border:1px solid var(--rule);
+    border-radius:3px;
+    padding:16px 14px;
+  }
+  .stat-cell .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:22px;
+    font-weight:600;
+    color:var(--gold);
+    display:block;
+    margin-bottom:4px;
+  }
+  .stat-cell .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.03em;
+    color:var(--ivory-dim);
+    line-height:1.4;
+  }
+
+  .pull{
+    border-left:3px solid var(--gold);
+    padding:6px 0 6px 22px;
+    margin:24px 0;
+    font-size:19px;
+    line-height:1.6;
+    font-style:italic;
+    color:var(--ivory);
+  }
+
+  table.ledger{
+    width:100%;
+    border-collapse:collapse;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    margin:8px 0 6px;
+  }
+  table.ledger th{
+    text-align:left;
+    border-bottom:2px solid var(--gold);
+    padding:8px 10px;
+    color:var(--gold);
+    font-weight:600;
+  }
+  table.ledger td{
+    border-bottom:1px solid var(--rule);
+    padding:9px 10px;
+    vertical-align:top;
+    color:var(--ivory);
+  }
+  table.ledger tr:last-child td{border-bottom:none;}
+
+  .finding-box{
+    background:rgba(177,74,58,0.10);
+    border-left:4px solid var(--red);
+    border-radius:0 3px 3px 0;
+    padding:16px 20px;
+    margin:20px 0;
+  }
+  .finding-box p{margin:0;color:var(--ivory);}
+  .finding-box strong{color:var(--gold);}
+
+  .good-box{
+    background:rgba(78,124,85,0.10);
+    border-left:4px solid var(--green);
+    border-radius:0 3px 3px 0;
+    padding:16px 20px;
+    margin:20px 0;
+  }
+  .good-box p{margin:0;color:var(--ivory);}
+
+  ul.plain{padding-left:22px;margin:0 0 16px;}
+  ul.plain li{margin-bottom:10px;line-height:1.65;font-size:17px;}
+
+  .rubric-row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:14px;
+    padding:12px 0;
+    border-bottom:1px dashed var(--rule);
+    align-items:baseline;
+  }
+  .rubric-row:last-child{border-bottom:none;}
+  .rubric-row .crit{font-family:'IBM Plex Mono', monospace;font-size:13px;color:var(--gold);letter-spacing:0.03em;}
+  .rubric-row .val{font-size:15.5px;color:var(--ivory-dim);line-height:1.5;}
+  .grade-final{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    margin-top:20px;
+    padding-top:18px;
+    border-top:2px solid var(--gold);
+  }
+  .grade-badge{
+    font-family:'Playfair Display', serif;
+    font-size:36px;
+    font-weight:700;
+    color:var(--red);
+    border:3px solid var(--red);
+    border-radius:8px;
+    padding:2px 18px;
+  }
+
+  footer{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 28px 70px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ivory-dim);
+    border-top:1px solid var(--rule);
+    padding-top:24px;
+  }
+
+  /* Start Here box */
+  .start-here{
+    background:rgba(201,162,75,0.07);
+    border:1.5px solid var(--gold);
+    border-radius:4px;
+    padding:24px 26px;
+    margin-bottom:40px;
+  }
+  .start-here .sh-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 10px;
+  }
+  .start-here p{
+    font-size:16px;
+    line-height:1.65;
+    color:var(--ivory);
+    margin:0 0 10px;
+  }
+  .start-here p:last-child{margin-bottom:0;}
+
+  /* Flip-card glossary */
+  .glossary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:0 0 16px;
+  }
+  .glossary-wide{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    margin:0 0 40px;
+  }
+  @media (max-width:600px){
+    .glossary{grid-template-columns:1fr;}
+  }
+  .flip-card{
+    background:transparent;
+    perspective:1000px;
+    height:130px;
+    cursor:pointer;
+  }
+  .flip-card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    text-align:left;
+    transition:transform 0.5s;
+    transform-style:preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner{
+    transform:rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    backface-visibility:hidden;
+    border-radius:4px;
+    padding:18px;
+    box-sizing:border-box;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .flip-card-front{
+    background:rgba(201,162,75,0.10);
+    border:1.5px solid var(--gold);
+  }
+  .flip-card-front .fc-term{
+    font-family:'Playfair Display', serif;
+    font-size:19px;
+    font-weight:700;
+    color:var(--gold);
+    margin:0 0 6px;
+  }
+  .flip-card-front .fc-tap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.05em;
+    color:var(--ivory-dim);
+    text-transform:uppercase;
+  }
+  .flip-card-back{
+    background:var(--gold);
+    color:var(--navy-deep);
+    transform:rotateY(180deg);
+    font-size:13.5px;
+    line-height:1.5;
+  }
+
+  /* Inline chart */
+  .chart-wrap{
+    margin:22px 0 8px;
+    background:rgba(255,255,255,0.02);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:16px 10px 10px;
+  }
+  .chart-caption{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ivory-dim);
+    text-align:center;
+    margin:10px 0 0;
+    line-height:1.5;
+  }
+
+  .mega-stat{
+    text-align:center;
+    margin:26px 0;
+    padding:20px 10px;
+    border-top:2px solid var(--gold);
+    border-bottom:2px solid var(--gold);
+  }
+  .mega-stat .mega-num{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(48px,9vw,72px);
+    font-weight:800;
+    color:var(--red);
+    line-height:1;
+    display:block;
+  }
+  .mega-stat .mega-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--ivory);
+    margin-top:8px;
+  }
+
+  /* Collapsible sources */
+  details.sources-box{
+    background:none;
+  }
+  details.sources-box summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+  }
+  details.sources-box summary::-webkit-details-marker{
+    display:none;
+  }
+  details.sources-box summary::after{
+    content:"▸ tap to expand";
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--gold-soft);
+    text-transform:none;
+    letter-spacing:0.02em;
+    border:none;
+    padding:0;
+    font-weight:400;
+  }
+  details.sources-box[open] summary::after{
+    content:"▾ tap to collapse";
+  }
+  details.sources-box[open] summary{
+    border-bottom:1px solid var(--rule);
+    padding-bottom:12px;
+    margin-bottom:16px;
+  }
+
+  /* Jump nav */
+  .jump-nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 0 36px;
+  }
+  .jump-nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.02em;
+    color:var(--ivory-dim);
+    text-decoration:none;
+    border:1px solid var(--rule);
+    border-radius:20px;
+    padding:6px 13px;
+    transition:border-color 0.15s ease, color 0.15s ease;
+  }
+  .jump-nav a:hover{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+
+  /* Two-column comparison cards */
+  .compare2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    margin:20px 0;
+  }
+  .compare2 .compare-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:18px 20px;
+  }
+  .compare2 .compare-card h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 10px;
+  }
+  .compare2 .compare-card p{
+    font-size:15px;
+    line-height:1.6;
+    margin:0;
+  }
+  @media (max-width:640px){
+    .compare2{grid-template-columns:1fr;}
+  }
+
+  /* Debt scale bar comparison */
+  .debt-bars{
+    margin:20px 0 8px;
+  }
+  .debt-bar-row{
+    margin-bottom:16px;
+  }
+  .debt-bar-label{
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ivory);
+    margin-bottom:5px;
+  }
+  .debt-bar-track{
+    background:rgba(255,255,255,0.06);
+    border-radius:3px;
+    height:22px;
+    overflow:hidden;
+  }
+  .debt-bar-fill{
+    height:100%;
+    border-radius:3px;
+  }
+
+  /* Rubric mini-cards */
+  .rubric-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:12px;
+    margin:0 0 20px;
+  }
+  .rubric-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--rule);
+    border-radius:4px;
+    padding:14px 14px 16px;
+    text-align:center;
+  }
+  .rubric-card .rc-letter{
+    font-family:'Playfair Display', serif;
+    font-size:30px;
+    font-weight:800;
+    color:var(--red);
+    display:block;
+    line-height:1;
+    margin-bottom:6px;
+  }
+  .rubric-card .rc-crit{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+  .rubric-card .rc-detail{
+    font-size:12.5px;
+    line-height:1.5;
+    color:var(--ivory-dim);
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="eyebrow">The Weber County Hive · Taxation</p>
+  <h1>Cheap on Paper — What Utah's Low-Tax Rankings Don't Show You</h1>
+  <p class="dek">Utah's income, property, and sales tax rates really are among the lowest in the country, by nearly every independent measure. Since 2018, the state has cut its income tax rate five separate times — and in that same stretch, a Weber County household's actual cost of living has climbed a lot faster than those rate cuts, driven largely by things that never show up in a tax-rate ranking at all.</p>
+  <p class="byline">Reported from public records — Utah State Tax Commission, Tax Foundation, Utah Foundation, Weber County Assessor and Treasurer, and this project's own bill-by-bill legislative research.</p>
+</header>
+
+<main>
+
+  <div class="start-here">
+    <p class="sh-label">Start Here</p>
+    <p>Utah's tax <em>rates</em> really are among the lowest in the country — that part checks out everywhere it's been measured. What this piece shows is a second, separate number: the actual <em>burden</em>, which has been climbing even as the rate falls, plus a set of local Weber County costs (new assessments, a new sales tax, school and sewer hikes) that never show up in any statewide rate ranking at all.</p>
+    <p>New to the terms "tax rate" and "tax burden"? Tap the cards below before you read on — more definitions will be added here as this project grows.</p>
+  </div>
+
+  <div class="glossary">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p class="fc-term">Tax Rate</p>
+          <p class="fc-tap">Tap to define</p>
+        </div>
+        <div class="flip-card-back">
+          <p>The percentage the government charges — like Utah's flat 4.45% income tax rate. A rate can fall every year and still produce a bigger bill, if the thing being taxed (your income, your home's value) is growing faster than the rate is shrinking.</p>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p class="fc-term">Tax Burden</p>
+          <p class="fc-tap">Tap to define</p>
+        </div>
+        <div class="flip-card-back">
+          <p>The actual dollar total collected in taxes, measured against income — the Utah Foundation tracks this as dollars per $1,000 of personal income. It's the number that shows whether people are really paying more or less over time, regardless of what any single rate is doing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="glossary-wide">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p class="fc-term">PID</p>
+          <p class="fc-tap">Tap to define</p>
+        </div>
+        <div class="flip-card-back">
+          <p>Public Infrastructure District — a special kind of local government a developer can form inside a new neighborhood. It can bill residents directly (separate from property taxes) and issue its own debt to pay for roads, sewer, and other infrastructure, usually run by a developer-appointed board in its early years. Created statewide by S.B. 228 in 2019.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="jump-nav">
+    <a href="#official-story">The Rates</a>
+    <a href="#burden">The Burden</a>
+    <a href="#housing">Housing vs. Income</a>
+    <a href="#weber">Weber County</a>
+    <a href="#pid-layer">The Hidden Layer</a>
+    <a href="#debt">Two Kinds of Debt</a>
+    <a href="#environment">Environmental Cost</a>
+    <a href="#serves">Who It Serves</a>
+    <a href="#bottom-line">Bottom Line</a>
+    <a href="#rubric">The Grade</a>
+  </nav>
+
+  <div class="lede">
+    <p>By the numbers most rankings use, Utah is a low-tax state, and that's not spin — it holds up across independent sources with no particular reason to agree with each other. But "the rate is low" and "the bill is manageable" are two different claims, and for a growing number of Weber County households, only the first one is still true.</p>
+  </div>
+
+
+  <section class="chapter">
+    <h2 id="official-story">The official story</h2>
+    <p>Utah's tax code ranks 15th overall on the Tax Foundation's 2026 State Tax Competitiveness Index. The state's flat individual income tax rate is 4.45% — down from 4.95% in 2018, after five consecutive legislative sessions each delivered a rate cut. The statewide effective property tax rate is 0.48%, tied for third- or fourth-lowest in the nation, behind only Hawaii and Alabama. Combined state and local sales tax averages 7.19%, solidly mid-pack nationally.</p>
+    <div class="stat-row">
+      <div class="stat-cell"><span class="num">15th</span><span class="label">Overall tax competitiveness rank, Tax Foundation 2026</span></div>
+      <div class="stat-cell"><span class="num">4.45%</span><span class="label">Flat state income tax rate, 2026 (was 4.95% in 2018)</span></div>
+      <div class="stat-cell"><span class="num">0.48%</span><span class="label">Statewide effective property tax rate</span></div>
+      <div class="stat-cell"><span class="num">7.19%</span><span class="label">Average combined state + local sales tax</span></div>
+    </div>
+    <p>The full rate-cut sequence since 2018, each one traceable to a specific bill:</p>
+    <table class="ledger">
+      <tr><th>Year</th><th>Bill</th><th>Rate change</th><th>Relief</th></tr>
+      <tr><td>2018</td><td>—</td><td>4.95% (baseline)</td><td>—</td></tr>
+      <tr><td>2022</td><td>S.B. 59 (Snider)</td><td>4.95% → 4.85%</td><td>~$193M — also created Utah's first state EITC</td></tr>
+      <tr><td>2023</td><td>H.B. 54 (Eliason)</td><td>4.85% → 4.65%</td><td>~$482M total package — largest single-year cut in this run</td></tr>
+      <tr><td>2024</td><td>S.B. 69 (Christofferson)</td><td>4.65% → 4.55%</td><td>~$167M</td></tr>
+      <tr><td>2025</td><td>H.B. 106 (Christofferson)</td><td>4.55% → 4.50%</td><td>~$103M</td></tr>
+      <tr><td>2026</td><td>S.B. 60 (Eliason)</td><td>4.50% → 4.45%</td><td>~$101M — 4-1-2 Senate committee, 8-2-1 House committee, not unanimous</td></tr>
+    </table>
+    <p>Over eight years, that's a full half-point off the rate — an 11% reduction from the 2018 starting point, per the Utah House Majority's own tally, which also credits the broader run of tax cuts (income tax, gas tax, child tax credit, Social Security relief, EITC) with more than $1.5 billion in cumulative relief since 2021. Those figures come from the same legislative majority that sponsored the cuts, so they're presented here as the sponsors' own accounting, not an independently audited total — but the rate-by-rate sequence itself is independently verifiable bill by bill, and it checks out.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="burden">What the rate cuts don't capture</h2>
+    <p>A tax <em>rate</em> and a tax <em>burden</em> aren't the same measurement. The Utah Foundation tracks the second one — total state and local taxes and mandatory fees, divided by total personal income, expressed as dollars per $1,000 earned. Its most recent full analysis found Utah's burden at $109.92 per $1,000 of personal income — the 19th highest in the country, just above the national average of $108.55.</p>
+    <div class="finding-box">
+      <p><strong>That $109.92 figure is up from $104.50 in 2016</strong> — which the Utah Foundation's own researchers called the lowest tax burden the state had seen in at least 60 years, and a level the state has been climbing away from since, through the exact years covered by the rate-cut table above. In other words: even as the headline income tax rate has fallen five straight sessions since 2018, the total dollar burden relative to what Utahns actually earn has been rising over the longer stretch. Both trends are real; they're just measuring different things, and only one of them shows up in a "lowest tax rate" ranking.</p>
+    </div>
+    <p>Utah collects $6,239 in state and local taxes per capita and carries $7,036 in state and local debt per capita, per the Tax Foundation's own 2026 figures — a state that is genuinely disciplined about its tax rates, while its total collections still climb with growth.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="housing">Housing since 2018: the number moving faster than any rate cut</h2>
+    <p>Utah's statewide median home sale price was roughly $297,000 in 2018 (Utah Association of Realtors, cited in contemporary coverage: 2019's $320,000 median represented a 7.7% increase over 2018). By mid-2026, Zillow's typical statewide home value stood at roughly $541,692.</p>
+
+    <div class="mega-stat">
+      <span class="mega-num">+82.4%</span>
+      <span class="mega-label">Statewide home price increase, 2018 → 2026 — while the income tax rate fell about 10%</span>
+    </div>
+
+    <p>Did income keep up? Not close. Utah's own median household income — same Census series, same years available — went from $77,070 in 2018 to $104,000 in 2024 (the most recent year on record): up about <strong>34.9%</strong>. Home prices grew more than twice as fast as income did over almost the same stretch. Income rose — that part is real — it just didn't rise anywhere near enough to absorb what housing cost.</p>
+    <div class="pull">A homebuyer's mortgage grew by roughly 82%. Their state income tax rate fell by about 10%. Those two numbers are not on the same scale, and only one of them is the one state leaders point to when describing Utah as affordable.</div>
+    <p>SmartAsset's 2026 "comfortable living" estimate — using a standard 50/30/20 budgeting rule — puts the pre-tax income a single Utah adult needs at $102,794 a year, up 3.3% from 2025 alone. For a family of four, that figure is $235,789. That single year's increase in the comfortable-income estimate — roughly $3,231 — is worth more, in dollar terms, than a median earner's combined savings from all five of the income tax cuts since 2018 put together. That's not a criticism of the cuts themselves — they're real money back in real paychecks. It's a scale problem: home prices and the broader cost of living are moving at a pace state income tax policy was never designed to offset.</p>
+
+    <div class="chart-wrap">
+      <svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chart comparing Ogden Valley home price growth to the statewide income tax rate decline, 2018 to 2026, both indexed to 100 at their earliest available year">
+        <!-- gridlines -->
+        <g stroke="#3A4258" stroke-width="1">
+          <line x1="80" y1="30" x2="80" y2="300"/>
+          <line x1="80" y1="300" x2="660" y2="300"/>
+          <line x1="80" y1="117" x2="660" y2="117" stroke-dasharray="2,4" opacity="0.5"/>
+          <line x1="80" y1="180" x2="660" y2="180" stroke-dasharray="2,4" opacity="0.5"/>
+          <line x1="80" y1="243" x2="660" y2="243" stroke-dasharray="2,4" opacity="0.5"/>
+        </g>
+        <!-- y-axis labels -->
+        <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#D9D2BC">
+          <text x="70" y="304" text-anchor="end">80</text>
+          <text x="70" y="247" text-anchor="end">120</text>
+          <text x="70" y="184" text-anchor="end">160</text>
+          <text x="70" y="121" text-anchor="end">200</text>
+          <text x="70" y="34" text-anchor="end">index</text>
+        </g>
+        <!-- x-axis year labels -->
+        <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#D9D2BC" text-anchor="middle">
+          <text x="80" y="318">2018</text>
+          <text x="152.5" y="318">2019</text>
+          <text x="225" y="318">2020</text>
+          <text x="297.5" y="318">2021</text>
+          <text x="370" y="318">2022</text>
+          <text x="442.5" y="318">2023</text>
+          <text x="515" y="318">2024</text>
+          <text x="587.5" y="318">2025</text>
+          <text x="660" y="318">2026</text>
+        </g>
+        <!-- income tax rate index line (gold), 2018=100 baseline -->
+        <polyline points="80,258.5 152.5,258.5 225,258.5 297.5,258.5 370,262.7 442.5,271.0 515,275.2 587.5,277.3 660,279.4"
+          fill="none" stroke="#C9A24B" stroke-width="2.5"/>
+        <g fill="#C9A24B">
+          <circle cx="80" cy="258.5" r="3.5"/><circle cx="152.5" cy="258.5" r="3.5"/><circle cx="225" cy="258.5" r="3.5"/>
+          <circle cx="297.5" cy="258.5" r="3.5"/><circle cx="370" cy="262.7" r="3.5"/><circle cx="442.5" cy="271.0" r="3.5"/>
+          <circle cx="515" cy="275.2" r="3.5"/><circle cx="587.5" cy="277.3" r="3.5"/><circle cx="660" cy="279.4" r="3.5"/>
+        </g>
+        <!-- Ogden Valley home price index line (rust), 2019=100 baseline; dashed 2019-2022 (no public 2020/2021 data) -->
+        <polyline points="152.5,258.5 370,117.0" fill="none" stroke="#B14A3A" stroke-width="2.5" stroke-dasharray="5,4"/>
+        <polyline points="370,117.0 442.5,126.0 515,55.8 587.5,70.5" fill="none" stroke="#B14A3A" stroke-width="2.5"/>
+        <g fill="#B14A3A">
+          <circle cx="152.5" cy="258.5" r="3.5"/><circle cx="370" cy="117.0" r="3.5"/>
+          <circle cx="442.5" cy="126.0" r="3.5"/><circle cx="515" cy="55.8" r="3.5"/><circle cx="587.5" cy="70.5" r="3.5"/>
+        </g>
+        <!-- legend -->
+        <rect x="85" y="36" width="275" height="46" fill="#0F1B2E" stroke="#3A4258" stroke-width="1" opacity="0.95"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="10.5">
+          <line x1="95" y1="50" x2="120" y2="50" stroke="#C9A24B" stroke-width="3"/>
+          <text x="126" y="54" fill="#F3EEDF">Statewide income tax rate (2018=100)</text>
+          <line x1="95" y1="68" x2="120" y2="68" stroke="#B14A3A" stroke-width="3"/>
+          <text x="126" y="72" fill="#F3EEDF">Ogden Valley home price (2019=100)</text>
+        </g>
+      </svg>
+      <p class="chart-caption">Indexed to each series' own earliest available year — the tax rate has no public data gap, but Ogden Valley home prices weren't publicly tracked for 2020-2021, shown here as the dashed segment. By 2024, Ogden Valley home prices had nearly doubled (index ≈198) while the income tax rate had fallen only about 8% (index ≈92) over the same stretch.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2 id="weber">Weber County, where the math gets real</h2>
+    <p>Weber County carries the highest effective property tax rate of any county on the Wasatch Front — 0.60%, ahead of Box Elder (0.58%), Davis (0.56%), and Salt Lake (0.55%). That's still low by national standards. It's the local trend layered on top of it that changes the picture. (Ogden Valley's own price records are only publicly available starting in 2019 — one year later than the statewide series above — so that's the earliest confirmed year for this specific dataset.)</p>
+    <table class="ledger">
+      <tr><th>What</th><th>Trend</th></tr>
+      <tr><td>Ogden Valley median home price</td><td>$577,000 (2019) → $1,140,000 (2024) — 14.6%/yr</td></tr>
+      <tr><td>Weber School District tax rate</td><td>+5.68% (2023) · +20.94% proposed (2025)</td></tr>
+      <tr><td>Central Weber Sewer Improvement District</td><td>Flat 2012–2023, then raised 2023, 2024, AND 2025 (+9.14% in 2025)</td></tr>
+      <tr><td>Ogden Valley City (incorporated Nov. 2024)</td><td>Council voted 3–2 for a conditional 512.6% property tax increase, FY27</td></tr>
+      <tr><td>Weber County's own sales tax</td><td>New 0.2% "5th 5th" local option tax, effective Oct. 1, 2026, ~$13.1M/yr</td></tr>
+    </table>
+    <p>That last line is worth sitting with. The Weber County sales tax was enabled by a single section — Section 9, amending Utah Code §59-12-2220 — buried inside S.B. 242, a 2026 transportation bill the House itself called "the session's most wide-ranging transit bill." A resident scanning the bill's stated subject would have no reason to expect a new county sales tax was riding inside it.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="pid-layer">The layer that doesn't show up in any ranking</h2>
+    <p>None of the increases above are the whole picture either. Utah's Public Infrastructure District law — S.B. 228, passed in 2019 — created a financing tool that lets a new development form its own government, issue its own bonds, and levy its own assessments, typically controlled by developer-appointed boards in a district's early years. Statewide, more than 200 PIDs and IFDs are now active; 71 have issued debt; total combined debt outstanding is roughly $5.267 billion, per the State Auditor's office.</p>
+    <p>A PID assessment doesn't show up in any "Utah has low property taxes" ranking, because it isn't a property tax. It's a separate legal mechanism, billed separately, governed by a separate board, and — this is the part that matters for the cost-of-living picture — it's often just the visible piece of a larger pattern: when a PID, an HTRZ, or a reinvestment agency captures the growth in tax revenue that a county, school district, or fire district would otherwise have collected as that area develops, that revenue doesn't disappear from the ledger. It shows up later, as a rate increase on everyone <em>not</em> inside the district — the same general fund still has to cover the same services for a growing population, with a smaller share of the growth revenue to do it.</p>
+    <div class="finding-box">
+      <p><strong>This mechanism just got layered again in 2026.</strong> S.B. 197 rewrote the exact statute (§59-12-103) that already divides statewide sales-tax growth among HTRZ zones, UFAIR, and the Point of the Mountain Authority — adding a new claimant, the Transit Transportation Investment Fund, starting FY2028. The bill's own funding trigger was then pushed back a full year by an unnamed House floor amendment, adopted by voice vote nine days before final passage, with no mover identified anywhere in the accessible public record.</p>
+    </div>
+    <p>None of this is illegal, and PID/TIF financing has been broadly upheld nationally under "public purpose" doctrine — this isn't a claim that a law has been broken. It's a claim that the mechanism is real, growing, and structurally invisible to the statistics that get cited to describe Utah as a low-tax state.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="debt">Two kinds of debt, and who's actually on the hook for each</h2>
+    <p>This is worth separating out cleanly, because they're not the same liability, they're not held by the same people, and conflating them muddies both sides of the story.</p>
+
+    <div class="debt-bars">
+      <div class="debt-bar-row">
+        <div class="debt-bar-label"><span>State of Utah (GO + lease-revenue)</span><span>$1.2B</span></div>
+        <div class="debt-bar-track"><div class="debt-bar-fill" style="width:19%;background:var(--gold);"></div></div>
+      </div>
+      <div class="debt-bar-row">
+        <div class="debt-bar-label"><span>Statewide PIDs &amp; IFDs (combined)</span><span>$5.267B</span></div>
+        <div class="debt-bar-track"><div class="debt-bar-fill" style="width:100%;background:var(--red);"></div></div>
+      </div>
+    </div>
+    <table class="ledger">
+      <tr><th></th><th>State of Utah (GO + lease-revenue bonds)</th><th>PIDs &amp; IFDs statewide (combined)</th></tr>
+      <tr><td>Outstanding debt</td><td>$1.2 billion (GO debt, as of Nov. 2024)</td><td>~$5.267 billion</td></tr>
+      <tr><td>Share of legal debt ceiling</td><td>10.5% of the Constitutional Debt Limit — the lowest in more than 40 years</td><td>No comparable statewide cap; each district sets its own</td></tr>
+      <tr><td>Who created it</td><td>The Legislature, via appropriated bond authorizations</td><td>Individual district boards, usually developer-controlled at formation</td></tr>
+      <tr><td>Number of issuers</td><td>One (the State itself)</td><td>200+ active districts, 71 with debt issued</td></tr>
+    </table>
+    <div class="finding-box">
+      <p><strong>The comparison above isn't this project's framing — it's the State Treasurer's own.</strong> Utah's 2025 Debt Affordability Study states plainly that PIDs and IFDs are now "carrying a combined debt load more than three times greater than the State's total GO and lease-revenue debt," and flags that while the debt is "legally separate from the State," a widespread downturn that disrupted payments or triggered legal disputes "could place pressure on local governments and, by extension, the State's credit environment" — language the Treasurer's own office chose to include, not a claim this piece is making independently.</p>
+    </div>
+    <div class="compare2">
+      <div class="compare-card">
+        <h3>Who's liable — State's side</h3>
+        <p>Utah's GO bonds are backed by "the full faith and credit of the State" — meaning if debt service ever couldn't be covered by regular appropriations, the state is constitutionally committed to levying taxes on real and personal property to cover it. In practice this has never been tested recently: the state has made every payment on schedule, debt has fallen to a 40-year-low share of its legal limit, and reserve fund balances now exceed the state's own net bond indebtedness. The liability is real, but it sits with the state as a whole, is disclosed in a public annual study, and has an entire office (the State Treasurer's) built around managing it.</p>
+      </div>
+      <div class="compare-card">
+        <h3>Who's liable — PID/IFD side</h3>
+        <p>Legally, it depends on where you're standing. A PID's bondholders are repaid from that specific district's own assessments — not the county's or the state's general tax base. A 2026 law clarified cities and counties aren't directly liable if a district defaults. But two exposures remain: the residents living inside the district, whose assessments are set by a board they may have had no vote in creating; and per Wohali Land Estates' 2025 bankruptcy, the first real test case, a PID's own bondholders get paid <em>before</em> outside commercial lenders — which State Auditor Tina Cannon warned can let a failing project take on more debt during a bankruptcy, "creating a new problem within a bankruptcy." Even where the host city isn't liable, the State Auditor still requires it to list that debt on its own financial statements — a disclosure Rep. Jordan Teuscher, an attorney, said could become "one piece of evidence" in future litigation.</p>
+      </div>
+    </div>
+    <div class="finding-box">
+      <p><strong>Say this plainly: no one votes to create this debt.</strong> State GO debt is authorized by elected legislators, who stand for election and answer to voters for the decision. A PID's $5.267 billion doesn't work that way at any stage. Forming the district, appointing its board, and issuing its bonds requires no public vote — not from the county, not from the state, and not from the residents who will eventually pay it off, because most of them don't live there yet when the board that binds them is created. The one formal public-input mechanism that exists — a statutory protest period — isn't even guaranteed: this project has already documented multiple Weber County districts (Promontory Commerce Center, Longhorn IFD) whose own formation paperwork included an explicit written waiver of that protest period, agreed to by the landowner before anyone else had standing to object. The debt still gets paid. The bill still lands on residents and, indirectly, on every taxpayer whose district loses growth revenue to it. Nobody ever cast a ballot on any of it.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <h2 id="environment">What growth costs beyond money</h2>
+    <p>Every one of these financing tools exists to make one thing happen faster: converting open or agricultural land into subdivisions. That has a real, physical cost that a rate ranking or a tax-cut headline never has to account for — less land left as open space and wildlife habitat, and new permanent demand on water and power systems that were sized for a smaller state.</p>
+    <p>Utah's population grew by 1.33 million people between 1990 and 2020, concentrated heavily along the Wasatch Front, and is projected to roughly double again — from 3 million to 6 million — by 2065. In the Great Salt Lake Basin alone, that growth already took 52,000 acres, about 81 square miles, of irrigated farmland out of production between 1990 and 2020. In Salt Lake County specifically, agriculture's share of total water use fell from nearly 50% in 1985 to about 10% by 2015, as that land was developed.</p>
+    <p>The state's own water planning treats this as a resource to draw on, not a coincidence: Utah's state water plan counts on converting another 27,000 to 45,000 acre-feet of agricultural water rights to urban use this decade specifically to supply new growth — enough, by the state's own math, for up to 90,000 new households. Every acre that gets rezoned and financed through an HTRZ, a PID, or a reinvestment agency is part of that same pipeline: less open land, less habitat, and a fixed water supply stretched across more permanent, year-round residential demand than the agricultural land it replaced. The same pattern holds for the electrical grid, which has to add generation and transmission capacity for that same permanent growth. None of this is disclosed anywhere in the financing documents that create these districts — the environmental cost of the growth is real, but it's carried by the land and the water system, not itemized on anyone's tax bill.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="serves">Who the growth machine actually serves</h2>
+    <p><strong>The stated goal vs. the mechanism.</strong> Utah's growth-development apparatus — HTRZ, RDA, UFAIR, PIDs, the Point of the Mountain Authority — is consistently marketed around housing affordability and economic development. But the mechanism itself isn't built to deliver broad public benefit; it's built to deliver financing to specific development projects, with the public interest folded in as a secondary condition (a minimum affordable-unit percentage, an infrastructure requirement) rather than the primary design.</p>
+    <p><strong>Who the structure actually routes money to:</strong></p>
+    <ul class="plain">
+      <li><strong>Developers</strong> get access to below-market financing (tax-exempt municipal bonds) and often control the district board that assesses residents, at least in the early years — Nordic Village, Sage Creek, and the other cases in this project's reporting all show this pattern.</li>
+      <li><strong>The underwriters</strong> — D.A. Davidson, Piper Sandler — built an entire business line originating this market since 2019 and now dominate Utah's municipal bond rankings because of it. That's a real, sustained financial beneficiary class that existed before any housing got built.</li>
+      <li><strong>The public</strong> gets whatever's left after the growth revenue is captured: real infrastructure sometimes (the Kimball Junction transit center, parks), but the counties, school districts, and fire districts that would have collected that growth revenue normally are the ones absorbing the shortfall — which is exactly the rate-increase pattern documented in this piece.</li>
+    </ul>
+    <p><strong>Does it address the housing shortage it's sold on?</strong> Only partially, and the "half affordable" framing doesn't hold up once you look at what that actually means in Summit County. Of Kimball Junction's 885 units, 385 — 43.5% — are flat market rate, in a county where the median home value is already roughly $850,700-$876,000. Of the 500 units labeled deed-restricted, only 315 sit at a genuinely low 60% AMI tier; 50 are reserved for households earning 100% AMI (about $107,100/year for one person) and another 50 for 120% AMI ($128,520/year) — six-figure income thresholds, not affordability by any normal meaning of the word. Summit County's own area median income jumped from $109,800 to $168,600 for a family of four in just five years, pulled upward by extreme wealth concentrated in Park City — meaning "AMI-based affordable" in this specific county buys a lot less than it sounds like it does. And on top of all that, construction can't even start until UDOT funds road improvements it isn't expected to bid until late 2027. The tool gets credit for solving a housing problem years before it delivers a single unit — and a meaningful share of what it eventually delivers won't be affordable to the workers the program is named for.</p>
+    <div class="finding-box">
+      <p><strong>And on the units that do get built, this isn't cheaper housing — it's deferred cost, shifted onto the resident.</strong> Without a PID, a developer has to pay for a neighborhood's roads, sewer, and other infrastructure up front, typically folding that cost into the home's sale price or absorbing it as debt on their own balance sheet. A PID lets the developer skip that: the district issues the bonds instead, and the residents who move in pay it off themselves, for decades, through a separate assessment stacked on top of their mortgage and their regular property tax. Nordic Village's own numbers show the shape of it — a 0.5% mill levy adds up to $500 per $100,000 of taxable value every year, on top of everything else a homeowner already pays. The developer's up-front cost goes down. The buyer's total cost of owning the home goes up, for as long as the bond is outstanding. Marketed as solving affordability, the structure actually does the opposite for the people living inside it: it makes the home cost more, not less — the savings belong to the developer, not the resident.</p>
+    </div>
+    <p><strong>Has it helped ordinary Utahns?</strong> The honest answer, based on what's actually measurable in the public record: not proportionally, and often not measurably at all — because Power and Transparency graded D across nearly every case in this project. Income tax cuts are real but modest ($101 million in the largest recent cut, statewide). Meanwhile home prices rose 82.4% against 34.9% income growth, and Weber County residents are now paying a new sales tax, new PID assessments, and school/sewer hikes that this same growth-capture machinery helped create room for. The public relations framing — "solving housing," "driving growth" — is aimed at a broad audience; the actual fiscal design routes the near-term benefit to a narrower one.</p>
+    <p><strong>And the detail that gets left out every time this is marketed as economic development:</strong> the $5.267 billion in PID debt behind it was never put to a single voter, anywhere, at any stage. The people ultimately covering it — through their own assessments if they live inside a district, or through the rate increases documented throughout this piece if they don't — never got a ballot on whether to take it on.</p>
+  </section>
+
+  <section class="chapter">
+
+    <h2 id="bottom-line">The honest bottom line</h2>
+    <p>Both things in this piece are true at the same time, and neither cancels the other out. Utah's tax <em>rates</em> are genuinely among the lowest in the country — verified independently by the Tax Foundation, Kiplinger, and multiple other sources with no reason to agree unless the underlying numbers actually support it. And a Weber County household's real cost trajectory — driven by home prices, new PID assessments, a new county sales tax, and school and sewer district hikes — is climbing considerably faster than those statewide rate rankings would lead anyone to expect.</p>
+    <div class="good-box">
+      <p>Worth stating plainly, for balance: the income tax cuts are real relief, the state's overall fiscal management (100% funded pension ratio, no estate or inheritance tax) is genuinely disciplined by national standards, and Weber County's own government did NOT raise its base county tax rate for 2025 or 2026 — the increases documented here are almost entirely at the school-district, special-district, city, and state-statute level, not the county commission itself.</p>
+    </div>
+    <p>A resident deciding whether Utah is affordable needs both numbers — the statewide rate ranking and the local, layered reality — not just the one that makes for a cleaner headline.</p>
+  </section>
+
+  <section class="chapter">
+    <h2 id="rubric">Graded against the collective rubric — the tax-diversion mechanism specifically</h2>
+    <p>This grading applies to the PID/TIF/HTRZ growth-revenue diversion mechanism described above, not to Utah's overall tax rate structure, which the rubric isn't built to assess.</p>
+    <div class="rubric-grid">
+      <div class="rubric-card">
+        <span class="rc-letter">D</span>
+        <div class="rc-crit">Power</div>
+        <div class="rc-detail">Concentrates control of new growth revenue in appointed/developer boards rather than elected county, school, or fire district governance</div>
+      </div>
+      <div class="rubric-card">
+        <span class="rc-letter">D</span>
+        <div class="rc-crit">Transparency</div>
+        <div class="rc-detail">The mechanism's cost shows up nowhere in a household's tax bill or statewide rankings; the 2026 base-year amendment moved with no named mover on record</div>
+      </div>
+      <div class="rubric-card">
+        <span class="rc-letter">D</span>
+        <div class="rc-crit">Financial Accountability</div>
+        <div class="rc-detail">Who ultimately pays (non-district taxpayers absorbing lost growth revenue) is real but not disclosed in any single document a resident would see</div>
+      </div>
+      <div class="rubric-card">
+        <span class="rc-letter">D</span>
+        <div class="rc-crit">Environmental Impact</div>
+        <div class="rc-detail">Every district converts open or agricultural land to permanent residential use, adding fixed demand on regional water and power systems</div>
+      </div>
+      <div class="rubric-card">
+        <span class="rc-letter">C</span>
+        <div class="rc-crit">Community Impact</div>
+        <div class="rc-detail">A documented, county-wide cost (rate pressure on non-PID households) rather than one contained to district boundaries, as often claimed</div>
+      </div>
+    </div>
+    <div class="grade-final">
+      <span class="grade-badge">D</span>
+      <p style="margin:0;color:var(--ivory);">A mechanism that's legal, growing, and structurally absent from every statistic used to describe Utah as a low-tax state.</p>
+    </div>
+  </section>
+
+  <section class="chapter">
+    <details class="sources-box">
+      <summary><h2 style="margin:0;border:none;padding:0;">Sources</h2></summary>
+      <ul class="plain">
+        <li>Utah House of Representatives Majority, "Utah's Tax Cut Streak: Six Years and $1.5 Billion" (the sponsors' own accounting of the 2018-2026 rate cuts)</li>
+        <li>Utah Association of Realtors 2018/2019 statewide median sale price data, via contemporaneous local coverage</li>
+        <li>U.S. Census Bureau / Current Population Survey, Median Household Income in Utah, via Federal Reserve Bank of St. Louis (FRED series MEHOINUSUTA646N)</li>
+        <li>Zillow Home Value Index (ZHVI), Utah statewide, June 2026</li>
+        <li>Tax Foundation, "2026 Utah Tax Rates &amp; Rankings" and 2026 State Tax Competitiveness Index</li>
+        <li>Utah Foundation, "Balancing the Burden: Utahns' Tax Burden is Up from Historical Low" (Christopher Collard, senior analyst)</li>
+        <li>Kiplinger, "10 States With the Lowest Property Tax Rates in 2026"</li>
+        <li>SmartAsset, 2026 "comfortable living income" analysis</li>
+        <li>Mountain Luxury annual/quarterly market reports, Ogden Valley (Eden/Huntsville/Liberty)</li>
+        <li>Weber County Treasurer's office; Weber School District budget filings; Central Weber Sewer Improvement District rate history</li>
+        <li>S.B. 228 (2019), S.B. 242 (2026), S.B. 197 (2026) — full text and status history, le.utah.gov</li>
+        <li>Utah State University Extension, "Agricultural Water Use and Economic Value in the Great Salt Lake Basin" and related USU water research</li>
+        <li>Utah Division of Water Resources / Utah's State Water Plan, agricultural-to-urban water transfer estimates</li>
+        <li>Park Record, "Summit County counters Dakota Pacific with 700-unit plan, half designated as affordable housing" (Dec. 2024) — 100%/120% AMI dollar thresholds</li>
+        <li>Summit County, UT official site, "AMI and Rent Limits Explained" and KPCW, "Summit County's median income jumps $10K+ in 2025"</li>
+        <li>Utah Office of State Treasurer, 2025 Debt Affordability Study (Nov. 1, 2025) and press release</li>
+        <li>Utah State Auditor's office, statewide PID debt tracking</li>
+        <li>See also this project's own Bill-Tracker case files: <a href="weber-hive-sb228.html">S.B. 228</a>, <a href="weber-hive-sb242.html">S.B. 242</a>, <a href="weber-hive-sb197.html">S.B. 197</a></li>
+      </ul>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  Sourced from official Utah Legislature bill text, the Tax Foundation, the Utah Foundation, and county-level public records. Compiled by The Weber County Hive.
+</footer>
+
+</body>
+</html>
