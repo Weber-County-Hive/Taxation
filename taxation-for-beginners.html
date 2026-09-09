@@ -198,6 +198,9 @@
   }
   .next-box a:hover { opacity: 0.9; }
 
+  .next-box-row { display: flex; gap: 18px; margin: 50px 0 0; flex-wrap: wrap; }
+  .next-box-row .next-box { flex: 1 1 260px; margin: 0; }
+
   details.sources {
     margin-top: 50px; border-top: 2px solid var(--brass); padding-top: 14px;
   }
@@ -491,6 +494,11 @@
     <p style="margin:0;">Utah's constitution requires that every dollar of income tax revenue go specifically to public education and to services for children and people with disabilities — it legally can't be spent on roads, prisons, or general government operations. This is different from sales tax and property tax, which fund a much broader range of things.</p>
   </div>
 
+  <div class="why-box">
+    <div class="label">The rate keeps falling — does that mean taxes are actually going down?</div>
+    <p>Utah has cut this rate five times since 2018 (4.95% → 4.45%). But the rate is only half the story — home prices rose 82.4% over that same stretch, and Utah's own tracked tax <em>burden</em> (total dollars collected, relative to income) has been climbing even as the rate falls. The full breakdown, including a side-by-side of what income actually kept up with, is in <a href="weber-hive-utah-cost-of-living-tax.html" style="color:var(--brass);">Cheap on Paper</a>, our companion piece to this page.</p>
+  </div>
+
   <h2 class="section">Gas Tax: Paid at the Pump, Funds the Roads</h2>
   <p>Every time you fill up in Utah, part of what you pay isn't for the gas itself — it's a per-gallon tax built into the price, specifically earmarked for roads and transportation.</p>
   <p>Unlike sales tax, this isn't a percentage of the price — it's a flat number of cents per gallon, so it doesn't go up or down when gas prices change. Utah's Legislature adjusts the exact rate periodically; it was cut by about 6 cents per gallon in the 2026 session.</p>
@@ -683,6 +691,11 @@
     <p>These districts are consistently justified publicly as economic development, affordable housing, or a response to a housing crisis. Whether that framing holds up deserves real scrutiny against what a given project actually delivers, who actually occupies it, and what it actually costs residents outside its boundary — not taken at face value just because it was the stated reason at approval.</p>
   </div>
 
+  <div class="why-box">
+    <div class="label">Want the full statewide picture?</div>
+    <p><a href="weber-hive-utah-cost-of-living-tax.html" style="color:var(--brass); font-weight:700;">Cheap on Paper</a> takes everything on this page — the PID stacking, the growth-revenue redirection, the falling income tax rate — and follows it all the way through: what it costs a Weber County household over time, whether anyone ever votes on it, and whether it's actually helped affordability or just moved the bill from the developer's side of the ledger to the resident's.</p>
+  </div>
+
   <h2 class="section">Bills That Changed These Rules</h2>
   <p>None of this is static — the Utah Legislature amends these mechanisms almost every session. Here are the specific bills behind the rules explained on this page, most recent first.</p>
 
@@ -851,11 +864,19 @@
     </ol>
   </details>
 
-  <div class="next-box">
-    <div class="label">Ready for the full picture?</div>
-    <h3>The Quiet Machine</h3>
-    <p style="margin:0; font-size:0.95rem;">Our first case file traces these mechanics through seven overlapping development-finance layers across Weber County — sourced entirely from public records.</p>
-    <a href="quiet-machine.html">Read the investigation &rarr;</a>
+  <div class="next-box-row">
+    <div class="next-box">
+      <div class="label">Ready for the full picture?</div>
+      <h3>The Quiet Machine</h3>
+      <p style="margin:0; font-size:0.95rem;">Our first case file traces these mechanics through seven overlapping development-finance layers across Weber County — sourced entirely from public records.</p>
+      <a href="quiet-machine.html">Read the investigation &rarr;</a>
+    </div>
+    <div class="next-box">
+      <div class="label">Or start with the numbers</div>
+      <h3>Cheap on Paper</h3>
+      <p style="margin:0; font-size:0.95rem;">Utah's rates are genuinely low. Since 2018, home prices still outran income by more than 2-to-1 — and a Weber County household ended up covering debt nobody ever voted on.</p>
+      <a href="weber-hive-utah-cost-of-living-tax.html">Read the full piece &rarr;</a>
+    </div>
   </div>
 
 </div>
