@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxation for Beginners — Weber County Hive</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#ECE0C4;
+    --cream:#EFE6D2;
+    --ink:#241C10;
+    --teal:#2F6E73;
+    --rust:#A63B24;
+    --brass:#96702E;
+    --navy:#172230;
+    --navy-2:#101923;
+    --navy-line:rgba(239,230,210,.12);
+    --serif-display:'Fraunces', serif;
+    --serif-body:'Source Serif 4', serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif-body);
+    line-height: 1.65;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px 90px; }
+
+  header.top {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--navy-line);
+  }
+  header.top .inner { max-width: 760px; margin: 0 auto; display: flex; gap: 20px; flex-wrap: wrap; font-family: var(--mono); font-size: 0.82rem; }
+  header.top a { color: var(--brass); text-decoration: none; }
+  header.top a:hover { text-decoration: underline; }
+
+  .hero { padding: 60px 0 40px; text-align: center; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 14px;
+  }
+  h1 {
+    font-family: var(--serif-display); font-weight: 700; font-size: 2.6rem;
+    line-height: 1.1; margin: 0 0 18px; color: var(--ink);
+  }
+  .dek { font-size: 1.15rem; color: #4a3f2a; max-width: 560px; margin: 0 auto; }
+
+  h2.section {
+    font-family: var(--serif-display); font-weight: 600; font-size: 1.5rem;
+    margin: 50px 0 16px; color: var(--ink); border-bottom: 2px solid var(--brass);
+    padding-bottom: 8px;
+  }
+  p { margin: 0 0 16px; font-size: 1.02rem; }
+
+  .term-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  @media (max-width: 600px) { .term-grid { grid-template-columns: 1fr; } }
+  .flip {
+    background: var(--cream); border: 1px solid rgba(36,28,16,0.15);
+    border-radius: 6px; padding: 16px 18px; cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .flip:hover { background: #fff; }
+  .flip-term {
+    font-family: var(--serif-display); font-weight: 600; font-size: 1.05rem;
+    color: var(--rust); margin-bottom: 4px;
+  }
+  .flip-hint { font-family: var(--mono); font-size: 0.75rem; color: var(--teal); }
+  .flip-def { display: none; font-size: 0.95rem; margin-top: 8px; color: #3a3020; }
+  .flip.open .flip-def { display: block; }
+  .flip.open .flip-hint { display: none; }
+
+  .mock-bill {
+    background: var(--navy); color: var(--cream); border-radius: 6px;
+    padding: 22px 24px 18px; margin: 22px 0; font-family: var(--mono);
+    border: 1px solid var(--navy-line);
+  }
+  .mock-bill-head { border-bottom: 1px solid var(--navy-line); padding-bottom: 12px; margin-bottom: 10px; }
+  .mock-bill-title { font-family: var(--serif-display); font-weight: 600; font-size: 1.1rem; color: var(--cream); }
+  .mock-bill-sub { font-size: 0.75rem; color: var(--brass); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 2px; }
+  .mock-bill-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 8px 0; font-size: 0.92rem; border-bottom: 1px dashed rgba(239,230,210,0.15);
+  }
+  .mock-bill-row .entity { color: var(--cream); opacity: 0.9; }
+  .mock-bill-row .amount { color: var(--cream); font-weight: 500; }
+  .mock-bill-row.total {
+    border-bottom: none; border-top: 2px solid var(--brass);
+    margin-top: 6px; padding-top: 12px; font-weight: 700;
+  }
+  .mock-bill-row.total .entity, .mock-bill-row.total .amount { color: var(--brass); font-size: 1.02rem; }
+  .mock-bill-note {
+    font-family: var(--serif-body); font-size: 0.82rem; color: var(--cream);
+    opacity: 0.7; margin-top: 14px; font-style: italic; line-height: 1.5;
+  }
+
+  .why-box {
+    background: var(--navy); color: var(--cream); border-radius: 6px;
+    padding: 24px 26px; margin: 24px 0;
+  }
+  .why-box .label {
+    font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--brass); margin-bottom: 10px;
+  }
+  .why-box p { margin: 0; color: var(--cream); }
+
+  .steps { counter-reset: step; margin: 20px 0; }
+  .step { display: flex; gap: 16px; margin-bottom: 22px; }
+  .step-num {
+    font-family: var(--serif-display); font-weight: 700; font-size: 1.4rem;
+    color: var(--brass); min-width: 34px;
+  }
+  .step-body h3 {
+    font-family: var(--serif-display); font-weight: 600; font-size: 1.1rem;
+    margin: 0 0 4px; color: var(--ink);
+  }
+  .step-body p { margin: 0; font-size: 0.98rem; }
+
+  .example-box {
+    background: var(--cream); border-left: 4px solid var(--teal);
+    padding: 18px 22px; margin: 24px 0; border-radius: 0 6px 6px 0;
+  }
+  .example-box .label {
+    font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 8px;
+  }
+
+  .stack-wrap { margin: 24px 0; }
+  .stack-layer {
+    background: var(--navy); color: var(--cream); border-radius: 4px;
+    padding: 14px 18px; margin-bottom: 4px; font-family: var(--mono);
+    font-size: 0.88rem; display: flex; justify-content: space-between; align-items: center;
+    border-left: 6px solid var(--brass);
+  }
+  .stack-layer .tool-name { font-weight: 700; color: var(--cream); }
+  .stack-layer .tool-what { color: var(--cream); opacity: 0.75; font-size: 0.82rem; margin-top: 2px; }
+  .stack-layer.l2 { border-left-color: var(--teal); }
+  .stack-layer.l3 { border-left-color: var(--rust); }
+  .stack-layer.l4 { border-left-color: #5C8A6E; }
+  .stack-layer.l5 { border-left-color: #8A8570; }
+  .stack-base {
+    background: var(--cream); border: 2px solid var(--ink); border-radius: 4px;
+    padding: 14px 18px; text-align: center; font-family: var(--mono);
+    font-size: 0.85rem; font-weight: 700; color: var(--ink);
+  }
+
+  .grade-pill {
+    display: inline-block; font-family: var(--mono); font-weight: 700; font-size: 0.82rem;
+    padding: 3px 10px; border-radius: 12px; color: var(--cream); margin-left: 8px;
+  }
+  .rubric-card {
+    background: #fffdf7; border: 1px solid rgba(36,28,16,0.15); border-radius: 6px;
+    padding: 16px 20px; margin-bottom: 14px;
+  }
+  .rubric-card .bill-line {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--serif-display); font-weight: 600; font-size: 1.02rem;
+    margin-bottom: 8px; flex-wrap: wrap; gap: 6px;
+  }
+  .rubric-card .rubric-note {
+    font-size: 0.88rem; color: #3a3020; line-height: 1.5;
+  }
+  .rubric-note b { color: var(--rust); }
+
+  .big-notice {
+    background: var(--rust); color: var(--cream); border-radius: 6px;
+    padding: 30px 28px; margin: 50px 0 30px; border: 2px solid #7a2a19;
+  }
+  .big-notice .label {
+    font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--cream); opacity: 0.85; margin-bottom: 12px;
+  }
+  .big-notice h3 {
+    font-family: var(--serif-display); font-weight: 700; font-size: 1.5rem;
+    margin: 0 0 14px; color: var(--cream);
+  }
+  .big-notice p { color: var(--cream); font-size: 1.02rem; margin: 0 0 14px; }
+  .big-notice p:last-child { margin-bottom: 0; }
+
+  .next-box {
+    background: var(--rust); color: var(--cream); border-radius: 6px;
+    padding: 26px; margin: 50px 0 0; text-align: center;
+  }
+  .next-box .label {
+    font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.06em; margin-bottom: 10px; opacity: 0.85;
+  }
+  .next-box h3 { font-family: var(--serif-display); font-size: 1.3rem; margin: 0 0 10px; }
+  .next-box a {
+    display: inline-block; margin-top: 8px; background: var(--cream); color: var(--rust);
+    text-decoration: none; font-family: var(--mono); font-weight: 600; font-size: 0.9rem;
+    padding: 10px 22px; border-radius: 4px;
+  }
+  .next-box a:hover { opacity: 0.9; }
+
+  details.sources {
+    margin-top: 50px; border-top: 2px solid var(--brass); padding-top: 14px;
+  }
+  details.sources summary {
+    cursor: pointer; font-weight: 700; color: var(--rust); font-family: var(--serif-display);
+    font-size: 1.05rem; list-style: none;
+  }
+  details.sources summary::-webkit-details-marker { display: none; }
+  details.sources summary::after { content: ' ▸ tap to expand sources'; font-size: 0.78rem; font-weight: 400; color: var(--teal); font-style: italic; }
+  details.sources[open] summary::after { content: ' ▾ tap to collapse'; }
+  details.sources ol { font-size: 0.9rem; color: #3a3020; padding-left: 22px; margin-top: 14px; }
+  details.sources li { margin-bottom: 10px; line-height: 1.5; }
+  details.sources h4 {
+    font-family: var(--mono); font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--teal); margin: 20px 0 6px;
+  }
+
+  footer.site {
+    text-align: center; font-family: var(--mono); font-size: 0.78rem;
+    color: var(--brass); margin-top: 70px; padding-top: 20px;
+    border-top: 1px solid rgba(36,28,16,0.15);
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a href="https://tinyurl.com/WCHINDEX">&larr; All Weber County Hive Repos</a>
+    <a href="index.html">&larr; Taxation Home</a>
+    <a href="https://webercountyhive.substack.com">Read on Substack &rarr;</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Start Here</div>
+    <h1>Taxation for Beginners</h1>
+    <p class="dek">There isn't just one tax — there are several, and they work in completely different ways. Here's each one, explained simply.</p>
+  </div>
+
+  <h2 class="section">Several different taxes, several different rules</h2>
+  <p>When people say "taxes," they usually mean one of a handful of totally separate things. Mixing them up is the number one reason tax stories feel confusing. Here are the three you'll run into daily — the rest, including income tax and gas tax, are covered further down.</p>
+
+  <div class="term-grid">
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Property Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A yearly bill based on what your home or business is worth. It pays for schools, cities, counties, fire districts, and water districts. This is the tax most of our stories are about.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Sales Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A small percentage added every time you buy something — clothes, electronics, a haircut. You pay it at checkout, not once a year.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Food Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A special, lower version of sales tax that applies specifically to groceries. Utah is one of only a handful of states that still taxes groceries at all.</div>
+    </div>
+  </div>
+
+  <h2 class="section">Property Tax: Who Gets a Slice</h2>
+  <p>Here's something most people don't realize: your one property tax bill isn't going to just one place. It's actually several different governments, each charging their own rate — and your real notice shows every one of them as its own separate line, not blended together.</p>
+
+  <div class="example-box">
+    <div class="label">Picture a pizza</div>
+    <p style="margin:0;">Imagine your property tax bill is a whole pizza. Your school district gets the biggest slice — usually well over half. Then the county takes a slice, your city or town takes a slice, and smaller slices go to things like the fire district, the water district, and the library. None of these governments sets the whole pizza — they each just claim their own slice of it, and your bill is all the slices added up.</p>
+  </div>
+
+  <div style="display:flex; justify-content:center; margin: 24px 0;">
+    <svg width="320" height="410" viewBox="0 0 320 410" xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <path d="M160,150 L160.00,20.00 A130,130 0 1 1 66.07,239.87 Z" fill="#96702E" stroke="#ECE0C4" stroke-width="2"/>
+        <path d="M160,150 L66.07,239.87 A130,130 0 0 1 35.13,113.84 Z" fill="#2F6E73" stroke="#ECE0C4" stroke-width="2"/>
+        <path d="M160,150 L35.13,113.84 A130,130 0 0 1 84.50,44.17 Z" fill="#A63B24" stroke="#ECE0C4" stroke-width="2"/>
+        <path d="M160,150 L84.50,44.17 A130,130 0 0 1 134.90,22.45 Z" fill="#5C8A6E" stroke="#ECE0C4" stroke-width="2"/>
+        <path d="M160,150 L134.90,22.45 A130,130 0 0 1 151.95,20.25 Z" fill="#7A5C3E" stroke="#ECE0C4" stroke-width="2"/>
+        <path d="M160,150 L151.95,20.25 A130,130 0 0 1 160.00,20.00 Z" fill="#8A8570" stroke="#ECE0C4" stroke-width="2"/>
+        <text x="160" y="90" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="15" font-weight="700" fill="#ECE0C4">62.9%</text>
+      </g>
+      <g font-family="'IBM Plex Mono', monospace" font-size="12.5">
+        <rect x="20" y="298" width="13" height="13" fill="#96702E"/>
+        <text x="40" y="309" fill="#241C10">School District — 62.9% ($1,842.10)</text>
+        <rect x="20" y="321" width="13" height="13" fill="#2F6E73"/>
+        <text x="40" y="332" fill="#241C10">County — 16.6% ($487.55)</text>
+        <rect x="20" y="344" width="13" height="13" fill="#A63B24"/>
+        <text x="40" y="355" fill="#241C10">City/Town — 10.7% ($312.20)</text>
+        <rect x="20" y="367" width="13" height="13" fill="#5C8A6E"/>
+        <text x="40" y="378" fill="#241C10">Fire District — 6.8% ($198.40)</text>
+        <text x="20" y="398" fill="#5a4d38" font-style="italic" font-size="11">Water &amp; other special districts: remaining 3.1%</text>
+      </g>
+    </svg>
+  </div>
+
+  <h3 style="font-family: var(--serif-display); font-weight: 600; font-size: 1.15rem; margin: 30px 0 10px; color: var(--ink);">What that actually looks like on your real notice</h3>
+  <p>This is a simplified example, not an actual bill — but it shows the real structure: every taxing entity gets its own line, and only the very bottom row is the number you actually pay.</p>
+
+  <div class="mock-bill">
+    <div class="mock-bill-head">
+      <div class="mock-bill-title">Sample Property Tax Notice</div>
+      <div class="mock-bill-sub">Weber County · Example only</div>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber School District</span>
+      <span class="amount">$1,842.10</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber County</span>
+      <span class="amount">$487.55</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">City / Town</span>
+      <span class="amount">$312.20</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Fire District</span>
+      <span class="amount">$198.40</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber Basin Water</span>
+      <span class="amount">$61.75</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Mosquito Abatement / Other Special Districts</span>
+      <span class="amount">$28.90</span>
+    </div>
+    <div class="mock-bill-row total">
+      <span class="entity">Total Property Tax Due</span>
+      <span class="amount">$2,930.90</span>
+    </div>
+    <div class="mock-bill-note">Each row is a separate government charging its own rate. If any entity is proposing a Truth-in-Taxation increase, your real notice shows a second "proposed" column next to that entity's row specifically — not the whole bill.</div>
+  </div>
+
+  <div class="why-box">
+    <div class="label">What you will never see on this notice</div>
+    <p>Income tax, sales tax, and food tax don't appear anywhere on a property tax notice — they're collected in completely different ways (out of your paycheck, or at checkout) and go through entirely separate processes at entirely different times of year. This notice is property tax only.</p>
+  </div>
+
+  <p>That's also why one street can have neighbors with different tax bills for similarly priced homes — they might sit in different school district boundaries, different fire district boundaries, or different special-service-district boundaries, even if they share a city and county.</p>
+
+  <h3 style="font-family: var(--serif-display); font-weight: 600; font-size: 1.15rem; margin: 30px 0 10px; color: var(--ink);">Same notice, but now with a PID</h3>
+  <p>If your home sits inside a Public Infrastructure District, one more line gets added — and it can be substantial. This is the mechanism at the center of our Quiet Machine investigation.</p>
+
+  <div class="mock-bill">
+    <div class="mock-bill-head">
+      <div class="mock-bill-title">Sample Property Tax Notice — Inside a PID</div>
+      <div class="mock-bill-sub">Weber County · Example only</div>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber School District</span>
+      <span class="amount">$1,842.10</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber County</span>
+      <span class="amount">$487.55</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">City / Town</span>
+      <span class="amount">$312.20</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Fire District</span>
+      <span class="amount">$198.40</span>
+    </div>
+    <div class="mock-bill-row">
+      <span class="entity">Weber Basin Water</span>
+      <span class="amount">$61.75</span>
+    </div>
+    <div class="mock-bill-row" style="border-color: var(--brass);">
+      <span class="entity" style="color: var(--brass); font-weight: 700;">Public Infrastructure District (PID)</span>
+      <span class="amount" style="color: var(--brass); font-weight: 700;">$1,150.00</span>
+    </div>
+    <div class="mock-bill-row total">
+      <span class="entity">Total Property Tax Due</span>
+      <span class="amount">$4,052.00</span>
+    </div>
+    <div class="mock-bill-note">The PID line pays off bonds the district issued to build infrastructure for that specific development — it's its own small government, with its own taxing and bonding authority, separate from the county, city, or school district above it. It's added on top of everything else, not instead of it, and it can run for decades until the bonds are paid off.</div>
+  </div>
+
+  <div class="example-box">
+    <div class="label">This line can move — up or down</div>
+    <p style="margin:0;">Most PID assessments in Utah are tied to your property's own value, the same way regular property tax is — as the county reassesses your home or the development around you goes up or down in value, the PID line on your bill moves with it. It's not usually a flat fee locked in at one number for the life of the bonds. That also means a hot housing market can make a PID line jump noticeably from one year to the next, even if the underlying bonds and project haven't changed at all.</p>
+  </div>
+
+  <div class="why-box">
+    <div class="label">What about the "transportation fee" some cities charge?</div>
+    <p>Nearly a dozen Utah cities charge a Transportation Utility Fee — but it doesn't show up on your property tax notice at all. It's billed on your <strong>city utility bill</strong> instead, alongside water, sewer, and garbage — a separate charge, on a separate bill, going through a separate process. Utah's courts have specifically ruled it counts as a "fee" rather than a "tax" because of that separation. It even applies to properties that don't pay property tax at all, like churches and some nonprofits, since it's tied to using the roads, not to owning taxable property.</p>
+  </div>
+
+  <h2 class="section">Commercial vs. Residential: Not Taxed the Same</h2>
+  <p>Utah treats a home you live in very differently from a business property, even if they're worth the exact same amount.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">🏠</div>
+      <div class="step-body">
+        <h3>Your primary home</h3>
+        <p>If it's the home you actually live in, Utah only taxes 55% of its value. The other 45% is exempt automatically. So a $500,000 primary home is really only taxed as if it were worth $275,000.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🏢</div>
+      <div class="step-body">
+        <h3>A business or commercial building</h3>
+        <p>There's no exemption. A $500,000 commercial building is taxed on the full $500,000. Same goes for a second home, a vacation property, or a rental you don't live in yourself.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="why-box">
+    <div class="label">Why this matters</div>
+    <p>This is a huge, deliberate policy choice — homeowners pay tax on about half of what their house is worth, while a business next door pays on the whole thing. It's one reason property tax fights often involve arguments about whether new development is "commercial enough" to pull its weight, or whether it's quietly getting residential-style treatment.</p>
+  </div>
+
+  <h3 style="font-family: var(--serif-display); font-weight: 600; font-size: 1.15rem; margin: 30px 0 10px; color: var(--ink);">There's a second gap too — how fast a reassessment happens</h3>
+  <p>Beyond the exemption, there's a separate rule about how quickly a jump in value actually gets caught and taxed. A 2026 law (H.B. 77) set two different tripwires:</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">🏠</div>
+      <div class="step-body">
+        <h3>A home</h3>
+        <p>Gets automatically flagged for reassessment once its value jumps 150% — so a big, sudden increase in what your house is worth gets caught and taxed relatively quickly.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🏢</div>
+      <div class="step-body">
+        <h3>A commercial property</h3>
+        <p>Doesn't get that same automatic flag until its value jumps 350% — more than double the bar a home has to clear before the same review kicks in.</p>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size:0.9rem; color:#5a4d38;">The original version of this bill set both thresholds at 150%; an amendment during the legislative process widened the commercial threshold specifically. It's not a dollar-for-dollar exemption like the 45% rule above — it's about how quickly a big value jump gets caught by the tax system at all.</p>
+
+  <div class="example-box">
+    <div class="label">What that actually means for a tax bill</div>
+    <p style="margin:0;">Until a property crosses its trigger, the assessor isn't required to specially review and update its taxable value to match its real, current market value — so a property that's quietly worth a lot more than its assessed value keeps getting taxed on that lower, stale number. A home crossing 150% gets caught and moved to its real value relatively fast. A commercial property has to more than double that growth — all the way to 350% — before the same catch-up happens. In the gap between those two thresholds, a commercial property can sit on a significantly out-of-date, lower taxable value, and pay less tax than its real worth would otherwise require, for longer than a home in the same position ever could.</p>
+  </div>
+
+  <h2 class="section">Food Tax: A Completely Different System</h2>
+  <p>Food tax has nothing to do with property tax — it's a form of sales tax, charged every time you check out at the grocery store, not once a year on a bill.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">🛒</div>
+      <div class="step-body">
+        <h3>Unprepared groceries — 3%</h3>
+        <p>Milk, bread, produce, a bag of chips — anything you'd take home and prepare yourself gets Utah's special, reduced grocery rate: about 3%, far below the regular sales tax rate.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🍔</div>
+      <div class="step-body">
+        <h3>Prepared or restaurant food — full rate</h3>
+        <p>A restaurant meal, a hot deli sandwich, or anything sold ready-to-eat gets taxed at the regular full sales tax rate instead — typically around 6% to 9%, depending on the city, roughly double to triple the grocery rate.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Worth knowing</div>
+    <p style="margin:0;">Most states don't tax groceries at all. Utah is one of only about ten states left that still does — just at a reduced rate instead of the full one. There's been ongoing discussion at the Legislature about eliminating it entirely, but as of this page, no permanent change has passed.</p>
+  </div>
+
+  <h2 class="section">Income Tax: Utah's Biggest Tax by Far</h2>
+  <p>This is the one most people already know from their paycheck — but it's worth spelling out because it's actually Utah's single largest source of tax revenue, bigger than sales tax or property tax on their own.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">💵</div>
+      <div class="step-body">
+        <h3>One flat rate for everyone</h3>
+        <p>Utah charges a flat 4.45% on income — the same percentage whether you make $30,000 or $300,000 a year. Some states charge higher rates for higher earners (a "progressive" system); Utah doesn't.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🏢</div>
+      <div class="step-body">
+        <h3>Businesses pay the same rate too</h3>
+        <p>Utah's corporate income tax is also a flat 4.45% — the state runs individual and business income tax at matching rates.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="label">Worth knowing</div>
+    <p style="margin:0;">Utah's constitution requires that every dollar of income tax revenue go specifically to public education and to services for children and people with disabilities — it legally can't be spent on roads, prisons, or general government operations. This is different from sales tax and property tax, which fund a much broader range of things.</p>
+  </div>
+
+  <h2 class="section">Gas Tax: Paid at the Pump, Funds the Roads</h2>
+  <p>Every time you fill up in Utah, part of what you pay isn't for the gas itself — it's a per-gallon tax built into the price, specifically earmarked for roads and transportation.</p>
+  <p>Unlike sales tax, this isn't a percentage of the price — it's a flat number of cents per gallon, so it doesn't go up or down when gas prices change. Utah's Legislature adjusts the exact rate periodically; it was cut by about 6 cents per gallon in the 2026 session.</p>
+
+  <h3 style="font-family: var(--serif-display); font-weight: 600; font-size: 1.15rem; margin: 30px 0 10px; color: var(--ink);">Three ways Utah actually pays for roads</h3>
+  <p>Gas tax isn't the whole story anymore — electric and hybrid vehicles barely buy any gas, so Utah has added two more funding streams alongside it.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">⛽</div>
+      <div class="step-body">
+        <h3>Gas tax</h3>
+        <p>The traditional per-gallon tax described above. Works fine for gas-powered cars — doesn't apply to EVs, since they never buy gas.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🔌</div>
+      <div class="step-body">
+        <h3>Road Usage Charge (RUC)</h3>
+        <p>A per-mile fee, specifically for electric and hybrid vehicles, so they still pay their share toward road maintenance even though they skip the gas pump. In 2026 it's 1.25 cents per mile, capped at $180 for the year. A 2026 law (S.B. 242) also created a separate, higher-cap version specifically for heavy commercial electric vehicles.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">🛍️</div>
+      <div class="step-body">
+        <h3>Local option transportation sales tax</h3>
+        <p>Separate from the gas tax entirely — this is a small slice of the regular sales tax you already pay on everyday purchases, specifically set aside by local vote to fund roads and transit in that area instead of general city or county spending.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section">A Few More Worth Knowing</h2>
+  <p>These don't touch most people every day the way income, sales, and property tax do — but they show up regularly in our coverage.</p>
+
+  <div class="term-grid">
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Alcohol — a markup, not a tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">Utah is a "control state" — the state itself owns and runs every liquor store (52 of them). Instead of a separate tax on wine and liquor, the state just marks up the price before selling it to you. That markup generated about $551 million in sales in FY2025, with roughly $204.5 million going to state and local programs like roads and public safety. Beer works differently — it's sold through regular private retailers and taxed the normal per-gallon way.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Cigarette Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A flat $1.70 tax on every pack of 20 cigarettes, built into the price at checkout — separate from the regular sales tax.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Severance Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A tax paid by companies that extract oil, gas, or minerals from the ground in Utah — a percentage of the value of what they pull out. This connects directly to a lot of our donor-network reporting, since extraction companies both pay this tax and frequently donate to the same legislators who set its rate.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">No Estate or Inheritance Tax</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">Unlike some states, Utah doesn't tax what you inherit or what your estate passes on when you die. Worth knowing since people sometimes assume otherwise.</div>
+    </div>
+  </div>
+
+  <h2 class="section">Back to Property Tax: How It Can Get Redirected</h2>
+  <p>Now that you know property tax is really several governments' slices added together, here's the part our investigations focus on most: sometimes, a slice of that future growth gets set aside for a specific development project instead of going to the usual places — before residents ever get the kind of public hearing a tax <em>increase</em> requires.</p>
+
+  <div class="why-box">
+    <div class="label">The part almost nobody explains: why the county line can rise even when the county isn't "raising taxes"</div>
+    <p>Here's the mechanism that usually stays invisible. When a project area or PID freezes a chunk of growing property value out of the county's regular tax base, that frozen value gets <strong>subtracted from the math</strong> the county uses to calculate its rate for everyone else. Since the county still needs to collect the same total budgeted amount, and it's now doing that math against a smaller pool of taxable value, the rate itself has to rise slightly to make up the difference — and that higher rate applies to every other property in the county, not just the ones in the project area.</p>
+    <p style="margin-top:12px;">The key part: this doesn't legally count as the county "raising taxes." No Truth-in-Taxation hearing is triggered, because the county isn't collecting more total revenue than it budgeted for — the increase shows up quietly, baked into the rate calculation itself. So a resident can watch their county line item creep up year after year with no hearing, no notice, and no explanation of why, because the actual cause — a frozen tax base somewhere else in the county — was never disclosed to them in the first place.</p>
+  </div>
+
+  <p style="font-size:0.9rem; color:#5a4d38; font-style:italic;">Six more terms, tap a card to reveal each one.</p>
+
+  <div class="term-grid">
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Truth-in-Taxation</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">Utah's law requiring a public notice and hearing before a taxing entity can collect more than its certified rate would generate. This is the part of the system residents actually get to see and weigh in on.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Certified Rate</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">The tax rate that adjusts automatically so rising property values alone don't hand a government a windfall. If a government wants more than this generates, that's when Truth-in-Taxation kicks in.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Tax Increment (TIF)</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">The new tax revenue a project area generates above its starting baseline value. This is the part that can be redirected to fund development instead of going to schools, fire, water, and other ordinary services.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">Project Area</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">A defined boundary — created by a state authority or a county — where growth's tax increment is committed to development for a set number of years, instead of flowing to the entities that would normally receive it.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">PID</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">Public Infrastructure District — its own small government, created to serve a specific development, that can levy its own taxes and issue its own bonds to pay for that development's infrastructure.</div>
+    </div>
+    <div class="flip" onclick="this.classList.toggle('open')">
+      <div class="flip-term">CRA</div>
+      <div class="flip-hint">Tap to reveal</div>
+      <div class="flip-def">Community Reinvestment Agency — a county or city tool similar to a project area, where growth's tax increment inside a designated boundary is redirected to fund redevelopment there instead of general services.</div>
+    </div>
+  </div>
+
+  <h2 class="section">How the two systems actually differ</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>A tax increase asks the public first</h3>
+        <p>When a school district, city, or water district wants to collect more than its certified rate, the law requires a public notice and a hearing. Residents get a date, a location, and the chance to show up and object before it happens.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>Redirecting growth revenue usually doesn't</h3>
+        <p>Creating a project area, a PID, or a CRA — and committing years of future growth revenue to it — is typically approved through ordinary board votes and interlocal agreements. There's no equivalent public notice requirement built in.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Both affect the same pool of money</h3>
+        <p>Growth is supposed to help pay for the roads, water, sewer, and emergency response it requires. When a large share of that new revenue is set aside for a project area instead, the entities that provide those services are left covering more of the gap — sometimes by asking for a tax increase of their own.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-box">
+    <div class="label">A simple way to picture it</div>
+    <p style="margin:0;">Think of it like your neighborhood's water bill. New neighbors move in and start paying for water too — that new money is supposed to help cover the shared system everyone uses. But under some of these deals, most of that new revenue is set aside for years to help pay for the new development itself, not the shared system. Meanwhile, your own water bill goes up because "the system needs more money."</p>
+  </div>
+
+  <div class="why-box">
+    <div class="label">Why this matters</div>
+    <p>None of this means every tax increase is caused by a project area, or that every development deal is a problem. Plenty of infrastructure genuinely needs upgrading, and plenty of development wouldn't happen without some form of public financing. What matters is that these two things — public tax increases and private redirection of growth revenue — usually happen through completely separate processes, on separate timelines, in front of separate audiences. Our reporting exists to put them back on the same page, so you can judge the pattern for yourself.</p>
+  </div>
+
+  <h2 class="section">These Tools Aren't Mutually Exclusive — They Stack</h2>
+  <p>Everything explained so far — PIDs, CRAs, RDAs, HTRZs, UIPA differentials — can exist as separate, standalone tools. But nothing stops a single development from having more than one layered on top of it at the same time. Each layer is created separately, through its own approval process, and each one keeps running on its own timeline even after the others are already in place.</p>
+
+  <p style="font-size:0.9rem; color:#5a4d38; font-style:italic; margin-top:-8px;">An illustrative example — a hypothetical growing development, showing what each layer could redirect annually. Actual figures vary enormously by project.</p>
+
+  <div class="stack-wrap">
+    <div class="stack-layer">
+      <div>
+        <div class="tool-name">PID — Public Infrastructure District</div>
+        <div class="tool-what">Its own government, issues its own bonds, levies its own assessment</div>
+      </div>
+      <div style="text-align:right; font-weight:700; font-size:1rem;">$1,150<br><span style="font-size:0.7rem; font-weight:400; opacity:0.7;">per year, one home</span></div>
+    </div>
+    <div class="stack-layer l2">
+      <div>
+        <div class="tool-name">CRA — Community Reinvestment Agency</div>
+        <div class="tool-what">County/city/school/fire commit a share of increment for a set number of years</div>
+      </div>
+      <div style="text-align:right; font-weight:700; font-size:1rem;">~$150,000<br><span style="font-size:0.7rem; font-weight:400; opacity:0.7;">redirected/year, whole project</span></div>
+    </div>
+    <div class="stack-layer l3">
+      <div>
+        <div class="tool-name">HTRZ — Housing and Transit Reinvestment Zone</div>
+        <div class="tool-what">Redirects growth in sales tax revenue near a transit station</div>
+      </div>
+      <div style="text-align:right; font-weight:700; font-size:1rem;">~$300,000<br><span style="font-size:0.7rem; font-weight:400; opacity:0.7;">redirected/year, whole zone</span></div>
+    </div>
+    <div class="stack-layer l4">
+      <div>
+        <div class="tool-name">RDA / UIPA / MIDA Differential</div>
+        <div class="tool-what">A state or local authority captures a share (often 75%) of new property tax growth</div>
+      </div>
+      <div style="text-align:right; font-weight:700; font-size:1rem;">75%<br><span style="font-size:0.7rem; font-weight:400; opacity:0.7;">of new growth, redirected</span></div>
+    </div>
+    <div class="stack-base">Same parcel, same growing value — underneath all of it</div>
+  </div>
+
+  <div class="why-box">
+    <div class="label">What this adds up to</div>
+    <p style="margin:0;">The PID line hits one homeowner's bill directly, every year. The CRA and HTRZ figures redirect revenue at the project or zone level — money that would otherwise flow to the county, city, school district, or general fund, now unavailable for those purposes for the life of the agreement. And on top of all of it, if the parcel also sits inside a state authority's project area, up to 75% of whatever new growth in property value it generates never reaches the ordinary taxing entities at all. None of these four numbers are drawn from one single real project — they're illustrative, built at a realistic scale from the mechanisms explained above. What's real is that all four <em>can</em> apply to the same ground at once, and each one is approved separately, without ever being shown together in one place.</p>
+  </div>
+
+  <div class="example-box">
+    <div class="label">A real, documented example — not hypothetical</div>
+    <p style="margin:0;">Nordic Village, in Weber County, already has two of these stacked at once. A <strong>CRA</strong> commits the county's share of increment for 15 years, and the school district, fire district, and Weber Basin each commit their own share for 15 years too. Separately, a <strong>Nordic Village PID</strong> issued $39.38 million in its own bonds, carrying its own 6.5% rate through 2055. These are legally distinct tools, approved through separate processes — but they're financially stacked on the exact same development, and a resident living there is paying into both at once.</p>
+  </div>
+
+  <p>Each individual layer usually gets its own approval, at its own meeting, described in its own terms. What rarely gets shown in one place is how many of these a single project can carry simultaneously — which is exactly why the pattern is easy to miss unless someone adds it all up.</p>
+
+  <div class="big-notice">
+    <div class="label">Worth sitting with</div>
+    <h3>The more PIDs get added, the more of this shifts onto residents</h3>
+    <p>Every PID, project area, and CRA that freezes growth revenue out of the county's base adds to the same rate-shifting effect explained above. Each one, on its own, can look small and defensible. Added together across years and across a growing county, the cumulative effect lands on ordinary residential tax bills — while the properties actually sitting inside these districts are the ones benefiting from the financing that created them.</p>
+    <p>These districts are consistently justified publicly as economic development, affordable housing, or a response to a housing crisis. Whether that framing holds up deserves real scrutiny against what a given project actually delivers, who actually occupies it, and what it actually costs residents outside its boundary — not taken at face value just because it was the stated reason at approval.</p>
+  </div>
+
+  <h2 class="section">Bills That Changed These Rules</h2>
+  <p>None of this is static — the Utah Legislature amends these mechanisms almost every session. Here are the specific bills behind the rules explained on this page, most recent first.</p>
+
+  <div class="mock-bill" style="font-family: var(--serif-body);">
+    <div class="mock-bill-head">
+      <div class="mock-bill-title" style="font-size:1rem;">2026 General Session</div>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 197</strong> — Transportation Funding and Governance Amendments (Harper/Christofferson)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Rewrote the statute governing how growth revenue is divided among HTRZ, RDA, UFAIR, and Point of the Mountain Authority districts statewide.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 242</strong> — Transportation Amendments (Harper/Christofferson)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Created the higher-cap Road Usage Charge for heavy commercial EVs; changed allowed uses of local option transportation sales tax.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>H.B. 77</strong> — Tax Modifications (Eliason/McCay)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Widened the automatic reassessment trigger for commercial property from 150% to 350%, while residential stayed at 150%.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 60</strong> — Income Tax Rate Amendments (McCay/Eliason)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Cut the state income tax rate from 4.50% to 4.45%, the sixth consecutive year of cuts.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 206</strong> — Tax Amendments (Harper/Walter)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Creates a new statewide TIF disclosure and database system covering UIPA, MIDA, UFAIR, and the Point of the Mountain Authority — but the disclosure timing was weakened from "before" to "within 30 days after" between substitutes.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>H.B. 575</strong> — Fuel Tax and Supply Amendments (Roberts)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Cut the state gas tax by about 15%, roughly 6 cents per gallon — also creates new pipeline permitting rules and a refinery data-reporting requirement with strong secrecy protections attached.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0; border-bottom:none;">
+      <strong>H.B. 106</strong> — Income Tax Revisions (2025)<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Cut the income tax rate from 4.55% to 4.50% (introduced at a bigger cut, to 4.45%, before being scaled back); also expanded the child tax credit and created a new employer child-care facility tax credit.</span>
+    </div>
+  </div>
+
+  <div class="mock-bill" style="font-family: var(--serif-body); margin-top:16px;">
+    <div class="mock-bill-head">
+      <div class="mock-bill-title" style="font-size:1rem;">Earlier sessions</div>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 333</strong> — 2025 — Major Sporting Event Venue Zone framework<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Created a new zone type that can redirect up to 75% of property tax increment — the same underlying model expanding into a new policy area.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>S.B. 69</strong> — 2024 — Income Tax Amendments<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Cut the income tax rate from 4.65% to 4.55%.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0;">
+      <strong>H.B. 562</strong> — 2024<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Created UFAIR, the Utah Fairpark Area Investment and Restoration District.</span>
+    </div>
+    <div class="mock-bill-row" style="display:block; padding:14px 0; border-bottom:none;">
+      <strong>S.B. 228</strong> — 2019 — Public Infrastructure District Act<br>
+      <span style="font-size:0.88rem; opacity:0.85;">Established the modern legal framework for PIDs in Utah (Title 17D, Chapter 4) — the tool behind most of the PID examples on this page.</span>
+    </div>
+  </div>
+
+  <p style="font-size:0.85rem; color:#5a4d38; font-style:italic; margin-top:16px;">This list covers the bills directly behind the mechanisms explained on this page — not a complete record of every Utah tax bill. We'll update it as new sessions pass relevant legislation.</p>
+
+  <h2 class="section">Graded Against the Collective Rubric</h2>
+  <p>Every bill and structure covered by this project gets judged the same way — five fixed questions, applied consistently: does it add or remove a public check on power; can the public actually see the process; who pays and is that disclosed plainly; what's the environmental effect; and who bears the cost or gets real standing to be heard. Some of these bills have deep, documented process detail behind them (2026 session ones especially); a few older ones are graded on thinner information, flagged below.</p>
+  <p style="font-size:0.9rem; color:var(--rust); font-style:italic;">A caution worth stating plainly: bills marked "Needs Review" below haven't had a full introduced-to-final redline pulled yet. Every bill on this page that HAS gotten that treatment turned out to have real substance a surface read missed. A clean-looking committee record isn't the same as a confirmed grade.</p>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 197 (2026) <span class="grade-pill" style="background:var(--rust);">D</span></div>
+    <div class="rubric-note"><b>Power/Transparency —</b> Bad. The base-year amendment that reshaped how every HTRZ, RDA, and UFAIR district in the state divides growth revenue passed by anonymous voice vote — no named mover, no record. <b>Financial accountability —</b> Bad. Changes a statewide revenue formula with no public-facing explanation of who wins or loses from the two-year delay.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 242 (2026) <span class="grade-pill" style="background:var(--rust);">D</span></div>
+    <div class="rubric-note"><b>Transparency —</b> Public committee hearing, named opposition testimony on the record — unlike S.B. 197. <b>Power —</b> Passed over organized bike/pedestrian-safety and neighborhood opposition; a documented provision lets transit vehicles block a bike or parking lane while loading, unloading, or making an operational adjustment. <b>Financial accountability —</b> A consumer privacy protection present in the introduced version — barring towing dispatch vendors from selling or sharing a vehicle owner's personal information — was removed in the substitute that passed; the public record doesn't state why. This bill is also the specific statutory basis Weber County used for its new 0.2% "5th 5th" sales tax, a real, current, checkable fiscal effect.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">H.B. 77 (2026) <span class="grade-pill" style="background:var(--rust);">D</span></div>
+    <div class="rubric-note"><b>Financial accountability —</b> Bad. Widened the automatic reassessment trigger for commercial property to more than double the residential threshold (350% vs. 150%), added via floor amendment rather than in the bill as introduced. <b>Community impact —</b> Bad. Shifts which properties get caught by faster tax review, favoring commercial over residential, with limited public conversation about that specific tradeoff.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 60 (2026) <span class="grade-pill" style="background:#8A8570;">Needs Review</span></div>
+    <div class="rubric-note">What's confirmed: real, named opposition testimony in both chambers' committees (four residents in the Senate; Moe Hickey of Voices for Utah Children in the House), with non-unanimous votes both times (4-1-2 Senate, 8-2-1 House). But no full introduced-to-final redline has been pulled for this bill yet — and every bill on this page that HAS gotten that treatment (H.B. 106, H.B. 575, S.B. 242, S.B. 206) turned out to have real substance a surface read missed. A clean-looking committee record isn't the same as a confirmed grade.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 206 (2026) <span class="grade-pill" style="background:var(--yellow-dark);">C</span></div>
+    <div class="rubric-note"><b>Transparency —</b> Mixed. Creates a new advance-disclosure requirement and public statewide database for TIF entities that didn't exist before — a real, substantive first for the exact mechanism (PID/TIF/UIPA/MIDA/UFAIR) this page spends most of its length examining. But between substitutes, the disclosure deadline was changed from before a TIF entity acts to within 30 days after — the public sees the plan after the fact, not before it. <b>Financial accountability —</b> Mixed. The defined self-declared spending cap ("maximum tax increment a local entity seeks to generate") was deleted and replaced with a looser, authorization-tied standard in the version that passed.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">H.B. 575 (2026) <span class="grade-pill" style="background:var(--rust);">D</span></div>
+    <div class="rubric-note"><b>Transparency —</b> The tax-cut rate change itself is public and plainly disclosed. But the same bill creates a new refinery reporting requirement whose data is classified as a protected record, confidential commercial information, and a trade secret all at once — exempt from GRAMA, barred from use in any regulatory, civil, or criminal proceeding, not subject to subpoena or court order, with unlawful disclosure by a state employee a Class A misdemeanor. <b>Power —</b> Bundled with pipeline permitting streamlining (a 120-day hard deadline across seven DEQ chapters), a new state duty for UDOT to "cooperate with and assist" pipeline companies on siting, and an expansion of the High Cost Infrastructure tax credit to cover hydrocarbon storage in salt caverns — all in the same bill as the tax cut. <b>Financial accountability —</b> Confirmed $11,903,900 one-time General Fund appropriation to local B and C Roads. <b>Community impact —</b> While the gas tax drops to $0.319/gallon, the alternative-fuel tax rate (CNG/LNG/hydrogen) rises from a 16.5¢ cap to 21.2¢, the same session — gas gets cheaper, EV-adjacent fuels get more expensive, in the same bill.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">H.B. 106 (2025) <span class="grade-pill" style="background:#8A8570;">Needs Review</span></div>
+    <div class="rubric-note">What's actually confirmed from the bill's own redline: the rate cut was scaled back during the process — introduced at 4.55% to 4.45%, passed at 4.55% to 4.50%, a smaller cut than Christofferson's own bill originally proposed. The bill also bundles three distinct provisions with three different beneficiary groups: the individual/corporate rate cut (broad), a new tax credit specifically for employers who build or operate child care facilities (business-only), and an expanded child tax credit for kids under six (parents of young children only). That's enough to state plainly, not enough to grade confidently on Power, Environmental impact, or Community impact — none of those have been examined yet.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 333 (2025) <span class="grade-pill" style="background:var(--yellow-dark);">C-</span></div>
+    <div class="rubric-note"><b>Power —</b> Mixed. Extends the same increment-capture model (up to 75% redirected) into a new category of zone, expanding a mechanism this page already treats critically into more territory. <b>Financial accountability —</b> Thin documentation on how the public was shown this expansion's tradeoffs at the time.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 69 (2024) <span class="grade-pill" style="background:#8A8570;">Needs Review</span></div>
+    <div class="rubric-note">Graded on process visibility alone so far — no redline comparison or committee minutes have actually been pulled for this bill. Same caution applies as S.B. 60: don't trust this grade until it gets the same full-text treatment the other bills on this page have gotten.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">H.B. 562 (2024) <span class="grade-pill" style="background:#8A8570;">Needs Review</span></div>
+    <div class="rubric-note">Created UFAIR. We don't yet have the committee record, vote breakdown, or public testimony for this one — grading it now would be a guess dressed up as an assessment. Flagged for deeper research before a grade is assigned.</div>
+  </div>
+
+  <div class="rubric-card">
+    <div class="bill-line">S.B. 228 (2019) <span class="grade-pill" style="background:var(--rust);">D</span></div>
+    <div class="rubric-note"><b>Power/Financial accountability —</b> Bad, structurally. This is the enabling statute for the entire PID mechanism examined throughout this page — every PID stacking example above traces back to this one bill. It created a tool whose core design (its own government, its own bonds, minimal ongoing public visibility once created) is the same structure this page spends most of its length raising concerns about. Graded on the tool it created, not on any specific project's execution of it.</div>
+  </div>
+
+
+  <details class="sources">
+    <summary>Sources &amp; Methodology</summary>
+    <h4>Property tax basics, exemptions &amp; reassessment</h4>
+    <ol>
+      <li>Weber County, Utah County, Davis County, and Summit County Assessor pages on the primary residential exemption (45% of fair market value exempt on a primary residence)</li>
+      <li>Utah State Tax Commission — Primary Residential Exemption (tax.utah.gov/propertytax/tax-relief/primary-residential-exemption)</li>
+      <li>Utah County Auditor — Valuation Notices and Taxing Entities pages (confirms each taxing entity appears as its own line item on a real notice)</li>
+      <li>H.B. 77 (2026), "Tax Modifications" — introduced, substitute, and enrolled bill text, le.utah.gov; the Norman Thurston floor amendment widening the commercial reassessment threshold to 350%</li>
+    </ol>
+
+    <h4>Sales, food, income, gas &amp; other taxes</h4>
+    <ol>
+      <li>Utah State Tax Commission — Grocery Food Sales &amp; Use Tax page (3% combined reduced rate)</li>
+      <li>Tax Foundation — 2026 Utah Tax Rates &amp; Rankings (income tax, sales tax, gas tax, cigarette tax figures)</li>
+      <li>Utah House of Representatives — "Utah's Tax Cut Streak: Six Years and $1.5 Billion" (house.utleg.gov), confirming S.B. 60, H.B. 575, H.B. 106, and S.B. 69's specific rate changes and sponsors</li>
+      <li>S.B. 60 (2026), "Income Tax Rate Amendments" — bill text, le.utah.gov</li>
+      <li>S.B. 206 (2026), "Tax Amendments" — introduced-to-S04 redline comparison and House/Senate Revenue and Taxation Committee minutes, le.utah.gov</li>
+      <li>H.B. 106 (2025), "Income Tax Revisions" — introduced-to-S03 redline comparison and Senate Revenue and Taxation Committee minutes, le.utah.gov</li>
+      <li>DABS (Utah Department of Alcoholic Beverage Services) 2025 Annual Report — the control-state markup system, $551.35M in FY2025 sales, $204.5M directed to state/local programs</li>
+      <li>Utah Code Title 11, Chapter 26, Part 3 — Transportation Utility Fee statute; Larson v. Pleasant Grove City, 2023 UT 2 (Utah Supreme Court ruling that a TUF is a fee, not a tax, because it's billed separately from property tax)</li>
+    </ol>
+
+    <h4>Road funding &amp; the Road Usage Charge</h4>
+    <ol>
+      <li>UDOT / DMV — Road Usage Charge Program pages (roadusagechargeutah.org), 2026 mileage rate and flat-fee cap</li>
+      <li>S.B. 242 (2026), "Transportation Amendments" — introduced, substitute, and enrolled bill text, le.utah.gov; the commercial EV road usage charge provision</li>
+      <li>Utah Legislature budget office — "On the Move: Updates to Sales Tax Designated for Transportation" (local option transportation sales tax mechanics)</li>
+    </ol>
+
+    <h4>PIDs, CRAs, HTRZ, UFAIR &amp; tax increment mechanics</h4>
+    <ol>
+      <li>S.B. 228 (2019), Public Infrastructure District Act — the enabling statute for PIDs in Utah (Title 17D, Chapter 4)</li>
+      <li>ROAM PID / p3-works PID 101 materials — confirmation that most Utah PID assessments are ad valorem (value-based), moving with reassessments year to year</li>
+      <li>Utah Inland Port Authority — "Understanding Tax Differential" (inlandportauthority.utah.gov) — the 75% growth-capture mechanic</li>
+      <li>Utah State Tax Commission Advisory Opinion 94-030 — confirms that a redevelopment agency's frozen base value is subtracted from the denominator used to calculate other taxing entities' certified rate, meaning the rate rises to compensate without triggering a Truth-in-Taxation hearing</li>
+      <li>S.B. 197 (2026), "Transportation Funding and Governance Amendments" — bill text and House floor amendment record, le.utah.gov; the base-year amendment affecting HTRZ, RDA, UFAIR, and Point of the Mountain Authority statewide</li>
+      <li>H.B. 562 (2024) — created UFAIR, the Utah Fairpark Area Investment and Restoration District</li>
+      <li>S.B. 333 (2025) — created the Major Sporting Event Venue Zone framework, up to 75% increment redirect</li>
+      <li>The Nordic Village CRA and PID example is drawn from this project's own prior reporting — see <a href="quiet-machine.html" style="color:var(--rust);">The Quiet Machine</a> for full sourcing on that specific case</li>
+    </ol>
+
+    <h4>Grading</h4>
+    <ol>
+      <li>Grades applied using The Weber County Hive's standing five-criteria collective rubric (Power, Transparency, Financial Accountability, Environmental Impact, Community Impact), used consistently across this project's coverage</li>
+    </ol>
+  </details>
+
+  <div class="next-box">
+    <div class="label">Ready for the full picture?</div>
+    <h3>The Quiet Machine</h3>
+    <p style="margin:0; font-size:0.95rem;">Our first case file traces these mechanics through seven overlapping development-finance layers across Weber County — sourced entirely from public records.</p>
+    <a href="quiet-machine.html">Read the investigation &rarr;</a>
+  </div>
+
+</div>
+
+<footer class="site">
+  THE WEBER COUNTY HIVE &middot; webercountyhive.substack.com
+</footer>
+
+</body>
+</html>
