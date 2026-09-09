@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taxation — The Weber County Hive</title>
+<style>
+  :root {
+    --cream: #f7f3e8;
+    --cream-dark: #e6f1ee;
+    --teal-dark: #264653;
+    --teal-soft: #3d6470;
+    --turquoise: #2a9d8f;
+    --turquoise-dark: #1f7a6e;
+    --yellow: #e9c46a;
+    --yellow-dark: #b9861f;
+    --coral: #e76f51;
+    --green: #588157;
+    --border: #cfe3de;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--teal-dark);
+    font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
+  header.masthead {
+    background: var(--teal-dark);
+    color: var(--cream);
+    padding: 40px 24px 34px;
+    border-bottom: 6px solid var(--turquoise);
+  }
+  header.masthead .inner { max-width: 900px; margin: 0 auto; }
+  .top-links { margin-bottom: 14px; font-size: 0.85rem; }
+  .top-links a {
+    color: var(--turquoise);
+    text-decoration: none;
+    margin-right: 18px;
+  }
+  .top-links a:hover { text-decoration: underline; }
+  h1.headline { font-size: 2rem; margin: 0 0 10px; font-weight: 700; }
+  p.dek { font-size: 1.05rem; color: var(--cream-dark); font-style: italic; margin: 0; max-width: 640px; }
+
+  .search-bar { margin-top: 26px; position: relative; }
+  .search-bar input {
+    width: 100%;
+    font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    font-size: 1rem;
+    padding: 12px 44px 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #fffdf7;
+    color: var(--teal-dark);
+  }
+  .search-bar input:focus {
+    outline: none;
+    border-color: var(--turquoise-dark);
+    box-shadow: 0 0 0 2px rgba(42,157,143,0.2);
+  }
+  .search-bar .search-icon {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    color: var(--teal-soft); font-size: 1rem; pointer-events: none;
+  }
+  .search-count { font-size: 0.85rem; color: var(--teal-soft); margin-top: 8px; font-style: italic; }
+
+  .cards { margin-top: 24px; display: flex; flex-direction: column; gap: 18px; }
+  .card {
+    display: block;
+    background: #fffdf7;
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--turquoise);
+    border-radius: 6px;
+    padding: 20px 24px;
+    text-decoration: none;
+    color: var(--teal-dark);
+    transition: box-shadow 0.15s ease;
+  }
+  a.card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.08); }
+  .card.hidden { display: none; }
+  .card-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
+  .card-summary { font-size: 0.96rem; margin-bottom: 12px; }
+  .card-summary mark { background: rgba(233,196,106,0.45); color: inherit; padding: 0 2px; border-radius: 2px; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    background: var(--cream-dark);
+    color: var(--teal-soft);
+    padding: 3px 9px;
+    border-radius: 3px;
+  }
+  .no-results { display: none; padding: 30px 0; text-align: center; color: var(--teal-soft); font-style: italic; }
+  .no-results.show { display: block; }
+
+  footer.site {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--teal-soft);
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="top-links">
+      <a href="https://tinyurl.com/WCHINDEX">&larr; All Weber County Hive Repos</a>
+      <a href="https://webercountyhive.substack.com">Read on Substack &rarr;</a>
+    </div>
+    <h1 class="headline">Taxation</h1>
+    <p class="dek">Utah tax bills and policy — what's changing, and who it affects.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <a href="taxation-for-beginners.html" class="card" style="border-left-color: var(--yellow-dark); margin-bottom: 28px;">
+    <div style="font-family: 'Courier New', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--yellow-dark); margin-bottom: 6px;">Start Here</div>
+    <div class="card-name">Taxation for Beginners</div>
+    <div class="card-summary">Every tax explained plainly — property, income, sales, food, and gas — plus how PIDs and TIF districts stack on top of your bill, and a running, graded tracker of the actual bills that changed the rules.</div>
+  </a>
+
+  <h2 style="font-family: Georgia, serif; font-size: 1.2rem; color: var(--teal-dark); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 30px 0 4px;">The Stories</h2>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search by title, keyword, or tag…" autocomplete="off">
+    <span class="search-icon">&#128269;</span>
+  </div>
+  <div class="search-count" id="searchCount"></div>
+
+  <div class="cards" id="cardContainer"></div>
+  <div class="no-results" id="noResults">No pieces match your search.</div>
+</div>
+
+<footer class="site">
+  The Weber County Hive · Accountability journalism for Weber County and beyond
+</footer>
+
+<script>
+  const PIECES = [
+    {
+      title: "The Quiet Machine",
+      summary: "Where Weber County's growth revenue goes while taxpayers are asked for more. Truth-in-Taxation notices, tax increment financing, and seven overlapping development-finance layers across the county — Nordic Village, Chromalox, West Bench, MIDA, and UIPA — traced through public records.",
+      tags: ["Truth-in-Taxation", "Tax Increment", "PIDs", "MIDA", "UIPA"],
+      link: "quiet-machine.html"
+    },
+    {
+      title: "Cheap on Paper",
+      summary: "Utah's tax rates really are among the lowest in the country. Since 2018 the state has cut income tax five times — and in that same stretch, home prices rose 82.4% against 34.9% income growth, Weber County picked up a new sales tax and a wave of PID debt nobody voted on, and the growth-financing machine behind it routes its near-term savings to developers, not residents.",
+      tags: ["Cost of Living", "Income Tax", "PIDs", "Weber County", "2018-2026"],
+      link: "weber-hive-utah-cost-of-living-tax.html"
+    }
+  ];
+
+  const container = document.getElementById('cardContainer');
+  const noResults = document.getElementById('noResults');
+  const searchInput = document.getElementById('searchInput');
+  const searchCount = document.getElementById('searchCount');
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function highlight(text, query) {
+    if (!query) return escapeHtml(text);
+    const escaped = escapeHtml(text);
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('(' + escapedQuery + ')', 'ig');
+    return escaped.replace(re, '<mark>$1</mark>');
+  }
+
+  function matchesSearch(piece, query) {
+    if (!query) return true;
+    const q = query.trim().toLowerCase();
+    const haystack = [piece.title, piece.summary, ...piece.tags].join(' ').toLowerCase();
+    return haystack.includes(q);
+  }
+
+  function renderCards(query) {
+    container.innerHTML = '';
+    let visibleCount = 0;
+
+    PIECES.forEach(piece => {
+      const matches = matchesSearch(piece, query);
+      if (matches) visibleCount++;
+
+      const outer = document.createElement('a');
+      outer.className = 'card' + (matches ? '' : ' hidden');
+      outer.href = piece.link;
+
+      const titleHtml = query ? highlight(piece.title, query) : escapeHtml(piece.title);
+      const summaryHtml = query ? highlight(piece.summary, query) : escapeHtml(piece.summary);
+
+      outer.innerHTML = `
+        <div class="card-name">${titleHtml}</div>
+        <div class="card-summary">${summaryHtml}</div>
+        <div class="tag-row">
+          ${piece.tags.map(t => `<span class="tag">${escapeHtml(t)}</span>`).join('')}
+        </div>
+      `;
+      container.appendChild(outer);
+    });
+
+    noResults.classList.toggle('show', visibleCount === 0);
+    searchCount.textContent = query ? `${visibleCount} of ${PIECES.length} piece${PIECES.length === 1 ? '' : 's'} match` : '';
+  }
+
+  let searchDebounce;
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchDebounce);
+    searchDebounce = setTimeout(() => renderCards(e.target.value), 120);
+  });
+
+  renderCards('');
+</script>
+
+</body>
+</html>
