@@ -287,4 +287,5 @@ function render(){
 const seen=new Set(),items=[];C.forEach(c=>c.src.forEach(u=>{if(!seen.has(u)){seen.add(u);items.push(`<li>${esc(c.b)} (${c.y}): <a href="${esc(u)}">${esc(u)}</a></li>`)}}));{const as_=document.getElementById('allsrc');if(as_)as_.innerHTML=items.join('');}
 document.querySelectorAll('.flip').forEach(f=>f.addEventListener('click',()=>f.setAttribute('aria-expanded',f.getAttribute('aria-expanded')==='true'?'false':'true')));
 </script>
+<script data-goatcounter="https://weberhive.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body></html>

@@ -4,146 +4,258 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Taxation — The Weber County Hive</title>
-<style>
-  :root {
-    --cream: #FFFFFF;
-    --cream-dark: #EEF3F8;
-    --teal-dark: #13243A;
-    --teal-soft: #4A5B70;
-    --turquoise: #1F5F99;
-    --turquoise-dark: #174A78;
-    --yellow: #A9C9EA;
-    --yellow-dark: #1F5F99;
-    --coral: #5B8DC4;
-    --green: #2E6DA4;
-    --border: #D3DEE9;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    background: var(--cream);
-    color: var(--teal-dark);
-    font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-    line-height: 1.6;
-  }
-  .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 80px; }
-  header.masthead {
-    background: var(--teal-dark);
-    color: var(--cream);
-    padding: 40px 24px 34px;
-    border-bottom: 6px solid var(--turquoise);
-  }
-  header.masthead .inner { max-width: 900px; margin: 0 auto; }
-  .top-links { margin-bottom: 14px; font-size: 0.85rem; }
-  .top-links a {
-    color: var(--turquoise);
-    text-decoration: none;
-    margin-right: 18px;
-  }
-  .top-links a:hover { text-decoration: underline; }
-  h1.headline { font-size: 2rem; margin: 0 0 10px; font-weight: 700; }
-  p.dek { font-size: 1.05rem; color: var(--cream-dark); font-style: italic; margin: 0; max-width: 640px; }
+<meta name="description" content="Utah tax bills and policy: what changed, who it affects, and the public records behind it.">
+<meta property="og:title" content="Taxation — The Weber County Hive">
+<meta property="og:description" content="Utah tax bills and policy: what changed, who it affects, and the public records behind it.">
+<style>:root{
+  --bg:#FFFFFF; --soft:#EEF3F8; --soft2:#DCE9F6; --line:#D3DEE9;
+  --ink:#13243A; --muted:#4A5B70; --navy:#13243A; --blue:#1F5F99; --sky:#8FC1F0;
+  --g1:#13243A; --g2:#5B8DC4; --g3:#A9C9EA;
+  --flag:#FFF4D6; --flagline:#C9A227;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-size:19px;line-height:1.6}
+a{color:var(--blue)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 80px}
+header.top{background:var(--navy);color:#fff;padding:18px 18px 40px}
+header.top .inner{max-width:980px;margin:0 auto}
+.toplinks{font-family:Arial,sans-serif;font-size:15px;display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:28px}
+.toplinks a{color:var(--sky);text-decoration:none}
+.toplinks a:hover{text-decoration:underline}
+.eyebrow{font-family:Arial,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);font-weight:700}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:10px 0 14px}
+.dek{font-size:21px;color:#DCE6F2;max-width:760px;margin:0}
+.byline{font-family:Arial,sans-serif;font-size:15px;color:#B8C7D8;margin-top:16px}
+h2{font-size:clamp(26px,4vw,34px);line-height:1.2;margin:56px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--blue)}
+h3{font-size:23px;margin:26px 0 8px}
+p{margin:0 0 16px}
+.lead{font-size:21px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:30px 0 10px}
+.tile{background:var(--soft);border-radius:12px;padding:20px 20px 18px;border-top:6px solid var(--blue)}
+.tile .n{font-family:Arial,sans-serif;font-size:56px;font-weight:800;line-height:1;color:var(--navy)}
+.tile .l{font-family:Arial,sans-serif;font-size:17px;font-weight:700;margin-top:8px}
+.tile .s{font-size:16px;color:var(--muted);margin-top:4px}
+.tile.t1{border-top-color:var(--g1)} .tile.t2{border-top-color:var(--g2)} .tile.t3{border-top-color:var(--g3)} .tile.tall{border-top-color:var(--blue);background:var(--soft2)}
+.note{background:var(--soft);border-left:6px solid var(--blue);padding:16px 18px;border-radius:8px;margin:18px 0}
+.flagbox{background:var(--flag);border-left:6px solid var(--flagline);padding:16px 18px;border-radius:8px;margin:18px 0}
+/* chart */
+.chart{margin:16px 0 8px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:Arial,sans-serif;font-size:16px;margin-bottom:14px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:18px;height:18px;border-radius:4px;display:inline-block}
+.yr{display:grid;grid-template-columns:62px 1fr 40px;align-items:center;gap:10px;margin:7px 0;font-family:Arial,sans-serif;font-size:17px}
+.bar{display:flex;height:34px;background:#F4F7FA;border-radius:6px;overflow:hidden}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700}
+.seg.g3{color:var(--navy)}
+.yr .tot{font-weight:800;text-align:right}
+/* flow diagram */
+.flow{background:var(--soft);border-radius:14px;padding:22px 18px;margin:18px 0;text-align:center;font-family:Arial,sans-serif}
+.fbox{background:#fff;border:3px solid var(--blue);border-radius:12px;padding:16px 18px;font-size:24px;font-weight:800;color:var(--navy);line-height:1.25}
+.fbox small{display:block;font-size:19px;font-weight:600;color:var(--muted);margin-top:6px}
+.fbox.top{background:var(--navy);color:#fff;border-color:var(--navy);max-width:560px;margin:0 auto}
+.fbox.top small{color:#DCE6F2}
+.fbox.r1{border-color:var(--g1)} .fbox.r2{border-color:var(--g2)} .fbox.r3{border-color:var(--g3);border-width:4px}
+.fbox.pay{background:var(--blue);color:#fff;border-color:var(--blue);max-width:360px;margin:0 auto;font-size:28px}
+.farrow{font-size:30px;color:var(--blue);line-height:1;margin:10px 0}
+.frow{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:16px;align-items:start}
+.fsub{background:#fff;border:2px dashed var(--blue);border-radius:10px;padding:12px 14px;font-size:20px;font-weight:700;margin:10px 0;text-align:left}
+.fsub small{display:block;font-size:18px;font-weight:500;color:var(--muted);margin-top:4px}
+@media (max-width:760px){.frow{grid-template-columns:1fr}}
+/* mermaid */
+.mermaid-wrap{background:var(--soft);border-radius:12px;padding:18px;margin:16px 0;overflow-x:auto}
+.mermaid{font-size:20px;text-align:center;min-width:620px}
+/* filters */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:16px 0 10px;font-family:Arial,sans-serif}
+.controls label{display:flex;flex-direction:column;font-size:15px;font-weight:700;gap:4px;flex:1 1 180px}
+.controls input,.controls select{font-size:17px;padding:10px;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-family:Arial,sans-serif}
+.count{font-family:Arial,sans-serif;font-size:16px;color:var(--muted);margin:6px 0 12px}
+details.bill{border:1px solid var(--line);border-left:7px solid var(--g1);border-radius:10px;margin:10px 0;background:#fff}
+details.bill.G2{border-left-color:var(--g2)} details.bill.G3{border-left-color:var(--g3)}
+details.bill.flagged{background:#FFFCF2}
+details.bill summary{cursor:pointer;padding:14px 16px;list-style:none;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
+details.bill summary::-webkit-details-marker{display:none}
+.bnum{font-family:Arial,sans-serif;font-weight:800;font-size:18px;white-space:nowrap}
+.btitle{font-size:19px;font-weight:700}
+.bmeta{grid-column:2;font-family:Arial,sans-serif;font-size:15px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 10px}
+.chip{display:inline-block;font-family:Arial,sans-serif;font-size:13px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--navy)}
+.chip.c1{background:var(--g1);color:#fff} .chip.c2{background:var(--g2);color:#fff} .chip.c3{background:var(--g3);color:var(--navy)}
+.chip.flag{background:var(--flag);border:1px solid var(--flagline);color:#5A4500}
+.bbody{padding:0 18px 16px;border-top:1px solid var(--line)}
+.bbody dl{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;margin:14px 0}
+.bbody dt{font-family:Arial,sans-serif;font-weight:700;font-size:15px;color:var(--muted)}
+.bbody dd{margin:0;font-size:18px}
+.srcs{font-family:Arial,sans-serif;font-size:14px;word-break:break-all}
+.srcs li{margin:3px 0}
+@media (max-width:640px){.bbody dl{grid-template-columns:1fr}.bbody dt{margin-top:6px}details.bill summary{grid-template-columns:1fr}.bmeta{grid-column:1}}
+/* described vs record */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0}
+.vs .h{font-family:Arial,sans-serif;font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;background:var(--navy);color:#fff}
+.vs .said{background:#fff;padding:14px 16px;font-size:18px}
+.vs .rec{background:var(--soft);padding:14px 16px;font-size:18px}
+.vs .cap{grid-column:1/-1;font-family:Arial,sans-serif;font-weight:800;font-size:18px;padding:12px 16px;background:var(--flag);border-bottom:1px solid var(--line)}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+/* flip cards */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0}
+.flip{background:var(--soft);border:2px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;text-align:left;font:inherit;color:inherit;min-height:120px}
+.flip .ft{font-size:22px;font-weight:700;color:var(--navy)}
+.flip .fh{font-family:Arial,sans-serif;font-size:14px;color:var(--blue);margin-top:6px}
+.flip .fd{display:none;font-size:18px;margin-top:10px}
+.flip[aria-expanded="true"]{background:#fff;border-color:var(--blue)}
+.flip[aria-expanded="true"] .fd{display:block}
+.flip[aria-expanded="true"] .fh{display:none}
+#map{height:520px;border-radius:12px;border:1px solid var(--line);margin:14px 0}
+.qa{display:grid;gap:12px;margin:14px 0}
+.qa div{background:var(--soft);border-radius:10px;padding:14px 18px}
+.qa b{display:block;font-family:Arial,sans-serif;font-size:16px;color:var(--blue);margin-bottom:4px}
+details.box{border:1px solid var(--line);border-radius:10px;margin:14px 0;background:#fff}
+details.box>summary{cursor:pointer;padding:14px 18px;font-family:Arial,sans-serif;font-weight:800;font-size:18px}
+details.box .in{padding:0 18px 16px}
+.leads li{margin:8px 0;font-size:17px}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.counter div{background:var(--soft);border-radius:10px;padding:14px;font-family:Arial,sans-serif}
+.counter .n{font-size:30px;font-weight:800}
+.counter .l{font-size:15px;color:var(--muted)}
+footer{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);text-align:center;border-top:1px solid var(--line);margin-top:60px;padding-top:20px}
+.toc{font-family:Arial,sans-serif;font-size:16px;display:flex;flex-wrap:wrap;gap:8px 16px;margin:24px 0 0}
+.toc a{text-decoration:none;background:var(--soft);padding:6px 12px;border-radius:999px}
 
-  .search-bar { margin-top: 26px; position: relative; }
-  .search-bar input {
-    width: 100%;
-    font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
-    font-size: 1rem;
-    padding: 12px 44px 12px 16px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: #FFFFFF;
-    color: var(--teal-dark);
-  }
-  .search-bar input:focus {
-    outline: none;
-    border-color: var(--turquoise-dark);
-    box-shadow: 0 0 0 2px rgba(31,95,153,0.2);
-  }
-  .search-bar .search-icon {
-    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-    color: var(--teal-soft); font-size: 1rem; pointer-events: none;
-  }
-  .search-count { font-size: 0.85rem; color: var(--teal-soft); margin-top: 8px; font-style: italic; }
+.draft{background:#FFF4D6;border-bottom:3px solid #C9A227;font-family:Arial,sans-serif;font-size:16px;padding:10px 18px;text-align:center;color:#5A4500}
+.seg.cut{background:#5B8DC4}.seg.inc{background:#13243A}.seg.both{background:#C9A227;color:#13243A}.seg.oth{background:#A9C9EA;color:#13243A}
+.chip.cut{background:#5B8DC4;color:#fff}.chip.inc{background:#13243A;color:#fff}.chip.both{background:#C9A227;color:#13243A}
+.chip.ok{background:#DCEFD9;color:#1E5631}.chip.chk{background:#FFF4D6;color:#5A4500;border:1px solid #C9A227}.chip.no{background:#F8D7D3;color:#7A1E14}
+.mix{border:1px solid var(--line);border-left:7px solid #C9A227;border-radius:10px;padding:14px 18px;margin:12px 0;background:#fff}
+.mix h3{margin:0 0 6px;font-size:21px}
+.mix .who{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);margin-bottom:8px}
+.mix .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mix .two div{background:var(--soft);border-radius:8px;padding:10px 12px;font-size:17px}
+.mix .two b{display:block;font-family:Arial,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.mix .fn{font-size:16px;color:var(--muted);margin-top:8px}
+@media (max-width:640px){.mix .two{grid-template-columns:1fr}}
+.pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0}
+.pages a{display:block;background:var(--soft);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);border-top:6px solid var(--blue)}
+.pages a b{display:block;font-size:20px;color:var(--navy);margin-bottom:4px}
+.pages a span{font-size:16px;color:var(--muted)}
+.facts{display:grid;gap:10px;margin:14px 0}
+.facts div{background:var(--soft);border-radius:10px;padding:14px 18px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table.xg{border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:17px}
+table.xg th,table.xg td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.xg th{background:var(--navy);color:#fff}
+table.xg tr:nth-child(even) td{background:var(--soft)}
+.srcline{font-family:Arial,sans-serif;font-size:15px;color:var(--muted)}
+.facts .src{font-family:Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:4px}
 
-  .cards { margin-top: 24px; display: flex; flex-direction: column; gap: 18px; }
-  .card {
-    display: block;
-    background: #FFFFFF;
-    border: 1px solid var(--border);
-    border-left: 5px solid var(--turquoise);
-    border-radius: 6px;
-    padding: 20px 24px;
-    text-decoration: none;
-    color: var(--teal-dark);
-    transition: box-shadow 0.15s ease;
-  }
-  a.card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.08); }
-  .card.hidden { display: none; }
-  .card-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; }
-  .card-summary { font-size: 0.96rem; margin-bottom: 12px; }
-  .card-summary mark { background: rgba(143,193,240,0.45); color: inherit; padding: 0 2px; border-radius: 2px; }
-  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tag {
-    font-size: 0.75rem;
-    font-family: 'Courier New', monospace;
-    background: var(--cream-dark);
-    color: var(--teal-soft);
-    padding: 3px 9px;
-    border-radius: 3px;
-  }
-  .no-results { display: none; padding: 30px 0; text-align: center; color: var(--teal-soft); font-style: italic; }
-  .no-results.show { display: block; }
+table.xg td.c{white-space:nowrap}
+.yes{color:#1E5631;font-weight:700}.no{color:#7A1E14;font-weight:700}.mid{color:#5A4500;font-weight:700}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+@media (max-width:760px){.paths{grid-template-columns:1fr}}
+.paths .fsub{margin:0}
+.callout{border-left:7px solid var(--blue);background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+.callout h3{margin:0 0 6px}
 
-  footer.site {
-    text-align: center;
-    font-size: 0.82rem;
-    color: var(--teal-soft);
-    margin-top: 60px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
+.series{margin:18px 0 6px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 14px}
+.series .st{font-family:Arial,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.series ol{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:4px 18px}
+.series li{font-size:17px;line-height:1.35}
+.series li.cur{font-weight:bold}
+.series li.cur a{color:var(--ink);text-decoration:none}
+.series small{display:block;font-size:14px;color:var(--muted);font-weight:normal}
+.fbox.pay small{color:#E6EEF8}
+.nextpage{margin:26px 0;padding:14px 18px;background:var(--soft);border-radius:12px;font-size:18px}
 
-.top-links a{color:#8FC1F0 !important}
+.viz{margin:20px 0;padding:16px 18px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.viz h4{font-family:Arial,sans-serif;font-size:19px;margin:0 0 4px;color:var(--navy)}
+.viz .sub{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);margin:0 0 14px}
+.viz .vsrc{font-family:Arial,sans-serif;font-size:13px;color:var(--muted);margin-top:10px}
+.hb{display:grid;grid-template-columns:minmax(110px,34%) 1fr;gap:10px 12px;align-items:center;font-family:Arial,sans-serif;font-size:16px}
+.hb .lab{text-align:right;line-height:1.25}
+.hb .lab small{display:block;color:var(--muted);font-size:13px}
+.hb .tr{display:flex;align-items:center;min-height:30px}
+.hb .fl{height:26px;border-radius:0 4px 4px 0;background:#2F6DB3;min-width:3px;flex-shrink:0}
+.hb .fl.navy{background:#13243A}.hb .fl.gold{background:#C9A227}.hb .fl.zero{background:none;border-left:3px solid #13243A;border-radius:0}
+.hb .v{margin-left:8px;font-weight:bold;color:var(--ink);line-height:1.2}
+.hb .pair{display:flex;flex-direction:column;gap:3px}
+.stack{display:flex;gap:2px;height:46px;border-radius:6px;overflow:hidden;font-family:Arial,sans-serif;font-weight:bold;font-size:16px}
+.stack div{display:flex;align-items:center;justify-content:center;color:#fff;min-width:3px}
+.stack .lt{color:#13243A}
+.lg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-family:Arial,sans-serif;font-size:15px}
+.lg span{display:inline-flex;align-items:center;gap:6px}
+.lg i{display:inline-block;width:14px;height:14px;border-radius:3px}
+.waf{display:flex;flex-wrap:wrap;gap:4px;max-width:560px}
+.waf span{width:40px;height:40px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;color:#fff;text-align:center;line-height:1.05}
+.waf .y{background:#C9A227;color:#13243A}.waf .n{background:#13243A}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:4px solid #A9C9EA;font-size:18px}
+.tl li{position:relative;margin:0 0 14px;padding-left:8px}
+.tl li:before{content:'';position:absolute;left:-33px;top:6px;width:16px;height:16px;border-radius:50%;background:#2F6DB3;border:3px solid #fff}
+.tl b{display:block;font-family:Arial,sans-serif;color:var(--navy)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.cols2{grid-template-columns:1fr}.hb{grid-template-columns:minmax(96px,40%) 1fr;font-size:15px}.waf span{width:34px;height:34px;font-size:10px}}
+
+.series{margin:18px 0 6px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 14px}
+.series .st{font-family:Arial,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.series ol{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:4px 18px}
+.series li{font-size:17px;line-height:1.35}
+.series li.cur{font-weight:bold}
+.series li.cur a{color:var(--ink);text-decoration:none}
+.series small{display:block;font-size:14px;color:var(--muted);font-weight:normal}
+.fbox.pay small{color:#E6EEF8}
+.nextpage{margin:26px 0;padding:14px 18px;background:var(--soft);border-radius:12px;font-size:18px}
+
+.feature{display:block;margin:22px 0 8px;padding:20px 22px;border-radius:12px;background:var(--soft);border-top:6px solid var(--blue);text-decoration:none;color:var(--ink)}
+.feature .k{font-family:Arial,sans-serif;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.feature b{display:block;font-size:24px;color:var(--navy);margin-bottom:6px}
+.search-bar{margin-top:18px;position:relative}
+.search-bar input{width:100%;font-family:Arial,sans-serif;font-size:18px;padding:14px 46px 14px 16px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+.search-bar input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(31,95,153,.2)}
+.search-bar .search-icon{position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none}
+.search-count{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);margin-top:8px}
+.cards{margin-top:18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{display:block;background:#fff;border:1px solid var(--line);border-top:6px solid var(--blue);border-radius:12px;padding:18px 20px;text-decoration:none;color:var(--ink)}
+a.card:hover{box-shadow:0 4px 16px rgba(19,36,58,.10)}
+.card.hidden{display:none}
+.card-name{font-size:21px;font-weight:bold;color:var(--navy);margin-bottom:6px;line-height:1.25}
+.card-summary{font-size:17px;margin-bottom:12px}
+.card-summary mark{background:rgba(143,193,240,.45);color:inherit;padding:0 2px;border-radius:2px}
+.tag-row{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:Arial,sans-serif;font-size:13px;background:var(--soft);color:var(--navy);padding:3px 9px;border-radius:999px}
+.no-results{display:none;padding:30px 0;text-align:center;color:var(--muted)}
+.no-results.show{display:block}
+.updates{font-family:Arial,sans-serif;font-size:15px;color:var(--muted)}
+.updates li{margin-bottom:4px}
 </style>
 </head>
 <body>
-
-<header class="masthead">
-  <div class="inner">
-    <div class="top-links">
-      <a href="https://tinyurl.com/WCHINDEX">&larr; All Weber County Hive Repos</a>
-      <a href="https://webercountyhive.substack.com">Read on Substack &rarr;</a>
-    </div>
-    <h1 class="headline">Taxation</h1>
-    <p class="dek">Utah tax bills and policy — what's changing, and who it affects.</p><p class="datebar" style="font-family:Arial,sans-serif;font-size:15px;line-height:1.5;color:#DCE6F2;margin:14px 0 0;">Posted Aug. 16, 2026 · Last content update Sept. 9, 2026<br>Updated Oct. 11, 2026: colors matched to the rest of the Hive and a link added to <a style="color:#8FC1F0" href="utah-tax-bills-2015-2026.html">Utah's Tax Changes: 62 Bills in Our 2015–2026 Inventory</a>. No facts changed.<br>Updated Oct. 17, 2026: added seven pages on tax cuts, local taxing powers, the zones, Weber County in 2026 and the Grand Hyatt case file.</p>
+<header class="top"><div class="inner">
+  <div class="toplinks">
+    <a href="https://tinyurl.com/WCHINDEX">&larr; All Weber County Hive repos</a>
+    <a href="https://webercountyhive.substack.com">Read on Substack &rarr;</a>
   </div>
-</header>
-
+  <div class="eyebrow">Utah Hive Politics · Repo</div>
+  <h1>Taxation</h1>
+  <p class="dek">Utah tax bills and policy: what changed, who it affects, and the public records behind it.</p>
+  <div class="byline">Posted Aug. 16, 2026 · Updated Oct. 17, 2026 · The Weber County Hive · We report public records. You decide.</div>
+</div></header>
 <div class="wrap">
-
-  <a href="taxation-for-beginners.html" class="card" style="border-left-color: var(--yellow-dark); margin-bottom: 28px;">
-    <div style="font-family: 'Courier New', monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--yellow-dark); margin-bottom: 6px;">Start Here</div>
-    <div class="card-name">Taxation for Beginners</div>
-    <div class="card-summary">Every tax explained plainly — property, income, sales, food, and gas — plus how PIDs and TIF districts stack on top of your bill, and a running, graded tracker of the actual bills that changed the rules.</div>
-  </a>
-
-  <h2 style="font-family: Georgia, serif; font-size: 1.2rem; color: var(--teal-dark); border-bottom: 1px solid var(--border); padding-bottom: 8px; margin: 30px 0 4px;">The Stories</h2>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search by title, keyword, or tag…" autocomplete="off">
-    <span class="search-icon">&#128269;</span>
-  </div>
-  <div class="search-count" id="searchCount"></div>
-
-  <div class="cards" id="cardContainer"></div>
-  <div class="no-results" id="noResults">No pieces match your search.</div>
+<a href="taxation-for-beginners.html" class="feature"><div class="k">New to Utah taxes? Start here</div><b>Taxation for Beginners</b>Every tax explained plainly: property, income, sales, food and gas, plus how PIDs and TIF districts stack on top of your bill, and a running, graded tracker of the bills that changed the rules.</a>
+<nav class="series" aria-label="Taxation pages"><div class="st">Taxation pages: read in any order</div><ol><li><a href="utah-tax-cuts-and-increases.html">Start here</a><small>The count, year by year, and bills that cut and raised at once</small></li><li><a href="utah-tax-cuts-2015-2026.html">Tax cuts: what they did</a><small>Who got relief, how much, and how the cuts are paid for</small></li><li><a href="utah-tax-cuts-all-laws.html">All 63 cut laws</a><small>Searchable list, year by year</small></li><li><a href="utah-tax-bills-2015-2026.html">The 62 tax increases</a><small>Every law that raised a tax or fee</small></li><li><a href="utah-state-laws-local-taxes.html">Taxing powers the state gave</a><small>31 laws, who decides, and whether you vote</small></li><li><a href="utah-tax-zones-explained.html">How the zones work</a><small>TIF, CRA, PID, IFD, MIDA and the other zones</small></li><li><a href="weber-county-taxes-2026.html">Weber County in 2026</a><small>The new sales tax and property tax increases</small></li><li><a href="utah-grand-hyatt-mida-case.html">The Grand Hyatt case file</a><small>A MIDA-owned hotel, its tax bill and its lease</small></li></ol></nav>
+<h2 id="all">Every piece in this repo</h2>
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search by title, keyword, or tag…" autocomplete="off">
+  <span class="search-icon">&#128269;</span>
 </div>
-
-<footer class="site">
-  The Weber County Hive · Accountability journalism for Weber County and beyond
-</footer>
-
+<div class="search-count" id="searchCount"></div>
+<div class="cards" id="cardContainer"></div>
+<div class="no-results" id="noResults">No pieces match your search.</div>
+<h2 id="updates">Update history</h2>
+<ul class="updates">
+  <li>Aug. 16, 2026: repo posted.</li>
+  <li>Sept. 9, 2026: content updated.</li>
+  <li>Oct. 11, 2026: colors matched to the rest of the Hive and a link added to <a href="utah-tax-bills-2015-2026.html">Utah's Tax Changes: 62 Bills in Our 2015–2026 Inventory</a>. No facts changed.</li>
+  <li>Oct. 17, 2026: added seven pages on tax cuts, local taxing powers, the zones, Weber County in 2026 and the Grand Hyatt case file; this page restyled to match. No facts changed on existing pieces.</li>
+</ul>
+<footer>The Weber County Hive · Utah Hive Politics · Questions or corrections: <a href="mailto:webercountyhive@gmail.com">webercountyhive@gmail.com</a></footer>
+</div>
 <script>
   const PIECES = [
   {
