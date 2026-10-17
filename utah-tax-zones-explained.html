@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How the Zones Work: TIF, CRA, PID, IFD, MIDA and the Rest — The Weber County Hive</title>
+<meta name="description" content="Every tool in Utah law that keeps future property tax growth for a project instead of sending it to the county, schools and districts: who creates each one, whether voters get a say, how much it keeps, and where it is used in Weber County.">
+<meta property="og:title" content="How the Zones Work: TIF, CRA, PID, IFD, MIDA and the Rest">
+<meta property="og:description" content="Every tool in Utah law that keeps future property tax growth for a project instead of sending it to the county, schools and districts: who creates each one, whether voters get a say, how much it keeps, and where it is used in Weber County.">
+<style>:root{
+  --bg:#FFFFFF; --soft:#EEF3F8; --soft2:#DCE9F6; --line:#D3DEE9;
+  --ink:#13243A; --muted:#4A5B70; --navy:#13243A; --blue:#1F5F99; --sky:#8FC1F0;
+  --g1:#13243A; --g2:#5B8DC4; --g3:#A9C9EA;
+  --flag:#FFF4D6; --flagline:#C9A227;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-size:19px;line-height:1.6}
+a{color:var(--blue)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px 80px}
+header.top{background:var(--navy);color:#fff;padding:18px 18px 40px}
+header.top .inner{max-width:980px;margin:0 auto}
+.toplinks{font-family:Arial,sans-serif;font-size:15px;display:flex;flex-wrap:wrap;gap:6px 20px;margin-bottom:28px}
+.toplinks a{color:var(--sky);text-decoration:none}
+.toplinks a:hover{text-decoration:underline}
+.eyebrow{font-family:Arial,sans-serif;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--sky);font-weight:700}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.1;margin:10px 0 14px}
+.dek{font-size:21px;color:#DCE6F2;max-width:760px;margin:0}
+.byline{font-family:Arial,sans-serif;font-size:15px;color:#B8C7D8;margin-top:16px}
+h2{font-size:clamp(26px,4vw,34px);line-height:1.2;margin:56px 0 12px;padding-bottom:8px;border-bottom:3px solid var(--blue)}
+h3{font-size:23px;margin:26px 0 8px}
+p{margin:0 0 16px}
+.lead{font-size:21px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:30px 0 10px}
+.tile{background:var(--soft);border-radius:12px;padding:20px 20px 18px;border-top:6px solid var(--blue)}
+.tile .n{font-family:Arial,sans-serif;font-size:56px;font-weight:800;line-height:1;color:var(--navy)}
+.tile .l{font-family:Arial,sans-serif;font-size:17px;font-weight:700;margin-top:8px}
+.tile .s{font-size:16px;color:var(--muted);margin-top:4px}
+.tile.t1{border-top-color:var(--g1)} .tile.t2{border-top-color:var(--g2)} .tile.t3{border-top-color:var(--g3)} .tile.tall{border-top-color:var(--blue);background:var(--soft2)}
+.note{background:var(--soft);border-left:6px solid var(--blue);padding:16px 18px;border-radius:8px;margin:18px 0}
+.flagbox{background:var(--flag);border-left:6px solid var(--flagline);padding:16px 18px;border-radius:8px;margin:18px 0}
+/* chart */
+.chart{margin:16px 0 8px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:Arial,sans-serif;font-size:16px;margin-bottom:14px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{width:18px;height:18px;border-radius:4px;display:inline-block}
+.yr{display:grid;grid-template-columns:62px 1fr 40px;align-items:center;gap:10px;margin:7px 0;font-family:Arial,sans-serif;font-size:17px}
+.bar{display:flex;height:34px;background:#F4F7FA;border-radius:6px;overflow:hidden}
+.seg{height:100%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;font-weight:700}
+.seg.g3{color:var(--navy)}
+.yr .tot{font-weight:800;text-align:right}
+/* flow diagram */
+.flow{background:var(--soft);border-radius:14px;padding:22px 18px;margin:18px 0;text-align:center;font-family:Arial,sans-serif}
+.fbox{background:#fff;border:3px solid var(--blue);border-radius:12px;padding:16px 18px;font-size:24px;font-weight:800;color:var(--navy);line-height:1.25}
+.fbox small{display:block;font-size:19px;font-weight:600;color:var(--muted);margin-top:6px}
+.fbox.top{background:var(--navy);color:#fff;border-color:var(--navy);max-width:560px;margin:0 auto}
+.fbox.top small{color:#DCE6F2}
+.fbox.r1{border-color:var(--g1)} .fbox.r2{border-color:var(--g2)} .fbox.r3{border-color:var(--g3);border-width:4px}
+.fbox.pay{background:var(--blue);color:#fff;border-color:var(--blue);max-width:360px;margin:0 auto;font-size:28px}
+.farrow{font-size:30px;color:var(--blue);line-height:1;margin:10px 0}
+.frow{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:16px;align-items:start}
+.fsub{background:#fff;border:2px dashed var(--blue);border-radius:10px;padding:12px 14px;font-size:20px;font-weight:700;margin:10px 0;text-align:left}
+.fsub small{display:block;font-size:18px;font-weight:500;color:var(--muted);margin-top:4px}
+@media (max-width:760px){.frow{grid-template-columns:1fr}}
+/* mermaid */
+.mermaid-wrap{background:var(--soft);border-radius:12px;padding:18px;margin:16px 0;overflow-x:auto}
+.mermaid{font-size:20px;text-align:center;min-width:620px}
+/* filters */
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;margin:16px 0 10px;font-family:Arial,sans-serif}
+.controls label{display:flex;flex-direction:column;font-size:15px;font-weight:700;gap:4px;flex:1 1 180px}
+.controls input,.controls select{font-size:17px;padding:10px;border:2px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);font-family:Arial,sans-serif}
+.count{font-family:Arial,sans-serif;font-size:16px;color:var(--muted);margin:6px 0 12px}
+details.bill{border:1px solid var(--line);border-left:7px solid var(--g1);border-radius:10px;margin:10px 0;background:#fff}
+details.bill.G2{border-left-color:var(--g2)} details.bill.G3{border-left-color:var(--g3)}
+details.bill.flagged{background:#FFFCF2}
+details.bill summary{cursor:pointer;padding:14px 16px;list-style:none;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline}
+details.bill summary::-webkit-details-marker{display:none}
+.bnum{font-family:Arial,sans-serif;font-weight:800;font-size:18px;white-space:nowrap}
+.btitle{font-size:19px;font-weight:700}
+.bmeta{grid-column:2;font-family:Arial,sans-serif;font-size:15px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 10px}
+.chip{display:inline-block;font-family:Arial,sans-serif;font-size:13px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--soft);color:var(--navy)}
+.chip.c1{background:var(--g1);color:#fff} .chip.c2{background:var(--g2);color:#fff} .chip.c3{background:var(--g3);color:var(--navy)}
+.chip.flag{background:var(--flag);border:1px solid var(--flagline);color:#5A4500}
+.bbody{padding:0 18px 16px;border-top:1px solid var(--line)}
+.bbody dl{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;margin:14px 0}
+.bbody dt{font-family:Arial,sans-serif;font-weight:700;font-size:15px;color:var(--muted)}
+.bbody dd{margin:0;font-size:18px}
+.srcs{font-family:Arial,sans-serif;font-size:14px;word-break:break-all}
+.srcs li{margin:3px 0}
+@media (max-width:640px){.bbody dl{grid-template-columns:1fr}.bbody dt{margin-top:6px}details.bill summary{grid-template-columns:1fr}.bmeta{grid-column:1}}
+/* described vs record */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:14px 0}
+.vs .h{font-family:Arial,sans-serif;font-weight:800;font-size:15px;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;background:var(--navy);color:#fff}
+.vs .said{background:#fff;padding:14px 16px;font-size:18px}
+.vs .rec{background:var(--soft);padding:14px 16px;font-size:18px}
+.vs .cap{grid-column:1/-1;font-family:Arial,sans-serif;font-weight:800;font-size:18px;padding:12px 16px;background:var(--flag);border-bottom:1px solid var(--line)}
+@media (max-width:640px){.vs{grid-template-columns:1fr}}
+/* flip cards */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0}
+.flip{background:var(--soft);border:2px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;text-align:left;font:inherit;color:inherit;min-height:120px}
+.flip .ft{font-size:22px;font-weight:700;color:var(--navy)}
+.flip .fh{font-family:Arial,sans-serif;font-size:14px;color:var(--blue);margin-top:6px}
+.flip .fd{display:none;font-size:18px;margin-top:10px}
+.flip[aria-expanded="true"]{background:#fff;border-color:var(--blue)}
+.flip[aria-expanded="true"] .fd{display:block}
+.flip[aria-expanded="true"] .fh{display:none}
+#map{height:520px;border-radius:12px;border:1px solid var(--line);margin:14px 0}
+.qa{display:grid;gap:12px;margin:14px 0}
+.qa div{background:var(--soft);border-radius:10px;padding:14px 18px}
+.qa b{display:block;font-family:Arial,sans-serif;font-size:16px;color:var(--blue);margin-bottom:4px}
+details.box{border:1px solid var(--line);border-radius:10px;margin:14px 0;background:#fff}
+details.box>summary{cursor:pointer;padding:14px 18px;font-family:Arial,sans-serif;font-weight:800;font-size:18px}
+details.box .in{padding:0 18px 16px}
+.leads li{margin:8px 0;font-size:17px}
+.counter{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.counter div{background:var(--soft);border-radius:10px;padding:14px;font-family:Arial,sans-serif}
+.counter .n{font-size:30px;font-weight:800}
+.counter .l{font-size:15px;color:var(--muted)}
+footer{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);text-align:center;border-top:1px solid var(--line);margin-top:60px;padding-top:20px}
+.toc{font-family:Arial,sans-serif;font-size:16px;display:flex;flex-wrap:wrap;gap:8px 16px;margin:24px 0 0}
+.toc a{text-decoration:none;background:var(--soft);padding:6px 12px;border-radius:999px}
+
+.draft{background:#FFF4D6;border-bottom:3px solid #C9A227;font-family:Arial,sans-serif;font-size:16px;padding:10px 18px;text-align:center;color:#5A4500}
+.seg.cut{background:#5B8DC4}.seg.inc{background:#13243A}.seg.both{background:#C9A227;color:#13243A}.seg.oth{background:#A9C9EA;color:#13243A}
+.chip.cut{background:#5B8DC4;color:#fff}.chip.inc{background:#13243A;color:#fff}.chip.both{background:#C9A227;color:#13243A}
+.chip.ok{background:#DCEFD9;color:#1E5631}.chip.chk{background:#FFF4D6;color:#5A4500;border:1px solid #C9A227}.chip.no{background:#F8D7D3;color:#7A1E14}
+.mix{border:1px solid var(--line);border-left:7px solid #C9A227;border-radius:10px;padding:14px 18px;margin:12px 0;background:#fff}
+.mix h3{margin:0 0 6px;font-size:21px}
+.mix .who{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);margin-bottom:8px}
+.mix .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mix .two div{background:var(--soft);border-radius:8px;padding:10px 12px;font-size:17px}
+.mix .two b{display:block;font-family:Arial,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:4px}
+.mix .fn{font-size:16px;color:var(--muted);margin-top:8px}
+@media (max-width:640px){.mix .two{grid-template-columns:1fr}}
+.pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:16px 0}
+.pages a{display:block;background:var(--soft);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);border-top:6px solid var(--blue)}
+.pages a b{display:block;font-size:20px;color:var(--navy);margin-bottom:4px}
+.pages a span{font-size:16px;color:var(--muted)}
+.facts{display:grid;gap:10px;margin:14px 0}
+.facts div{background:var(--soft);border-radius:10px;padding:14px 18px}
+.tablewrap{overflow-x:auto;margin:14px 0}
+table.xg{border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:17px}
+table.xg th,table.xg td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.xg th{background:var(--navy);color:#fff}
+table.xg tr:nth-child(even) td{background:var(--soft)}
+.srcline{font-family:Arial,sans-serif;font-size:15px;color:var(--muted)}
+.facts .src{font-family:Arial,sans-serif;font-size:14px;color:var(--muted);margin-top:4px}
+
+table.xg td.c{white-space:nowrap}
+.yes{color:#1E5631;font-weight:700}.no{color:#7A1E14;font-weight:700}.mid{color:#5A4500;font-weight:700}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+@media (max-width:760px){.paths{grid-template-columns:1fr}}
+.paths .fsub{margin:0}
+.callout{border-left:7px solid var(--blue);background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:14px 0}
+.callout h3{margin:0 0 6px}
+
+.series{margin:18px 0 6px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 14px}
+.series .st{font-family:Arial,sans-serif;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.series ol{margin:0;padding-left:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:4px 18px}
+.series li{font-size:17px;line-height:1.35}
+.series li.cur{font-weight:bold}
+.series li.cur a{color:var(--ink);text-decoration:none}
+.series small{display:block;font-size:14px;color:var(--muted);font-weight:normal}
+.fbox.pay small{color:#E6EEF8}
+.nextpage{margin:26px 0;padding:14px 18px;background:var(--soft);border-radius:12px;font-size:18px}
+
+.viz{margin:20px 0;padding:16px 18px 14px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.viz h4{font-family:Arial,sans-serif;font-size:19px;margin:0 0 4px;color:var(--navy)}
+.viz .sub{font-family:Arial,sans-serif;font-size:15px;color:var(--muted);margin:0 0 14px}
+.viz .vsrc{font-family:Arial,sans-serif;font-size:13px;color:var(--muted);margin-top:10px}
+.hb{display:grid;grid-template-columns:minmax(110px,34%) 1fr;gap:10px 12px;align-items:center;font-family:Arial,sans-serif;font-size:16px}
+.hb .lab{text-align:right;line-height:1.25}
+.hb .lab small{display:block;color:var(--muted);font-size:13px}
+.hb .tr{display:flex;align-items:center;min-height:30px}
+.hb .fl{height:26px;border-radius:0 4px 4px 0;background:#2F6DB3;min-width:3px;flex-shrink:0}
+.hb .fl.navy{background:#13243A}.hb .fl.gold{background:#C9A227}.hb .fl.zero{background:none;border-left:3px solid #13243A;border-radius:0}
+.hb .v{margin-left:8px;font-weight:bold;color:var(--ink);line-height:1.2}
+.hb .pair{display:flex;flex-direction:column;gap:3px}
+.stack{display:flex;gap:2px;height:46px;border-radius:6px;overflow:hidden;font-family:Arial,sans-serif;font-weight:bold;font-size:16px}
+.stack div{display:flex;align-items:center;justify-content:center;color:#fff;min-width:3px}
+.stack .lt{color:#13243A}
+.lg{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;font-family:Arial,sans-serif;font-size:15px}
+.lg span{display:inline-flex;align-items:center;gap:6px}
+.lg i{display:inline-block;width:14px;height:14px;border-radius:3px}
+.waf{display:flex;flex-wrap:wrap;gap:4px;max-width:560px}
+.waf span{width:40px;height:40px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:Arial,sans-serif;font-size:11px;color:#fff;text-align:center;line-height:1.05}
+.waf .y{background:#C9A227;color:#13243A}.waf .n{background:#13243A}
+.tl{list-style:none;margin:0;padding:0 0 0 22px;border-left:4px solid #A9C9EA;font-size:18px}
+.tl li{position:relative;margin:0 0 14px;padding-left:8px}
+.tl li:before{content:'';position:absolute;left:-33px;top:6px;width:16px;height:16px;border-radius:50%;background:#2F6DB3;border:3px solid #fff}
+.tl b{display:block;font-family:Arial,sans-serif;color:var(--navy)}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.cols2{grid-template-columns:1fr}.hb{grid-template-columns:minmax(96px,40%) 1fr;font-size:15px}.waf span{width:34px;height:34px;font-size:10px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="inner">
+  <div class="toplinks">
+    <a href="https://tinyurl.com/WCHINDEX">&larr; All Weber County Hive repos</a>
+    <a href="index.html">Taxation repo</a>
+    <a href="taxation-for-beginners.html">Taxation for Beginners</a>
+    <a href="https://webercountyhive.substack.com">Read on Substack &rarr;</a>
+  </div>
+  <div class="eyebrow">Taxation · Utah Hive Politics · Explainer</div>
+  <h1>How the Zones Work: TIF, CRA, PID, IFD, MIDA and the Rest</h1>
+  <p class="dek">Every tool in Utah law that keeps future property tax growth for a project instead of sending it to the county, schools and districts: who creates each one, whether voters get a say, how much it keeps, and where it is used in Weber County.</p>
+  <div class="byline">Posted Oct. 17, 2026 · Updated Oct. 17, 2026 · The Weber County Hive · We report public records. You decide.</div>
+</div></header>
+<div class="wrap">
+<nav class="toc" aria-label="On this page"><a href="#how">How it works</a><a href="#tools">TIF, CRA, PID, IFD and the zones: every tool that keeps tax growth</a><a href="#growth">Growth sent to zones in Weber County</a><a href="#words">Words to know</a><a href="#ask">Questions to ask, and whom to ask</a><a href="#related">Connected Hive work</a><a href="#sources">Sources</a></nav>
+<nav class="series" aria-label="Taxation pages"><div class="st">Taxation pages: read in any order</div><ol><li><a href="utah-tax-cuts-and-increases.html">Start here</a><small>The count, year by year, and bills that cut and raised at once</small></li><li><a href="utah-tax-cuts-2015-2026.html">Tax cuts: what they did</a><small>Who got relief, how much, and how the cuts are paid for</small></li><li><a href="utah-tax-cuts-all-laws.html">All 63 cut laws</a><small>Searchable list, year by year</small></li><li><a href="utah-tax-bills-2015-2026.html">The 62 tax increases</a><small>Every law that raised a tax or fee</small></li><li><a href="utah-state-laws-local-taxes.html">Taxing powers the state gave</a><small>31 laws, who decides, and whether you vote</small></li><li class="cur"><a href="utah-tax-zones-explained.html">How the zones work</a><small>TIF, CRA, PID, IFD, MIDA and the other zones</small></li><li><a href="weber-county-taxes-2026.html">Weber County in 2026</a><small>The new sales tax and property tax increases</small></li><li><a href="utah-grand-hyatt-mida-case.html">The Grand Hyatt case file</a><small>A MIDA-owned hotel, its tax bill and its lease</small></li></ol></nav>
+
+<h2 id="how">How it works</h2>
+<div class="flow">
+  <div class="fbox top">The Legislature passes a law<small>It sets what a local body may tax, how much, and whether voters must approve</small></div>
+  <div class="farrow">▼</div>
+  <div class="fbox">A local body decides whether to use it<small>A city council, county commission, school board, district board or state authority board</small></div>
+  <div class="farrow">▼</div>
+  <div class="paths">
+    <div class="fsub">1. A new local sales or excise tax<small>Paid at the register or on a utility bill. No individual notice to each household. A public vote only if the law requires one.</small></div>
+    <div class="fsub">2. A property tax increase<small>Above the certified rate, the body must mail notice and hold a Truth in Taxation hearing. Voters can only reverse it by referendum petition.</small></div>
+    <div class="fsub">3. Tax growth sent to a zone<small>A share of future property tax growth goes to a zone, PID, CRA or authority instead of the county, schools and districts. No rate goes up, so no Truth in Taxation notice.</small></div>
+  </div>
+  <div class="farrow">▼</div>
+  <div class="fbox pay">You pay</div>
+</div>
+<p class="note">Path 3 doesn't raise anyone's rate. It sends growth that the county, school district and other bodies would otherwise receive to a project. Those bodies still serve the new growth, so the cost can show up later as a rate increase or as less service. The records reviewed don't measure that for any one project.</p>
+
+<h2 id="tools">TIF, CRA, PID, IFD and the zones: every tool that keeps tax growth</h2>
+<figure class="viz"><h4>What a zone keeps</h4><p class="sub">A zone never takes the tax on value that was already there. It takes a share of the tax on new value.</p>
+<div class="flow">
+  <div class="fbox top">A parcel's property tax bill<small>Split into two parts</small></div>
+  <div class="farrow">▼</div>
+  <div class="paths" style="grid-template-columns:1fr 1fr">
+    <div class="fsub">Tax on the value before the zone (the base)<small>Goes to the county, schools, city and districts, as before</small></div>
+    <div class="fsub">Tax on new value since the zone began (the growth)<small>A share, 60% to 100% depending on the tool, goes to the zone for 15 to 40 years. The rest goes to the taxing bodies</small></div>
+  </div>
+  <div class="farrow">▼</div>
+  <div class="fbox pay">The zone uses its share<small>To repay bonds or pay for roads, utilities and other project costs</small></div>
+</div></figure>
+<figure class="viz"><h4>How much each tool keeps, and for how long</h4><p class=sub>Two separate charts: the most a zone can keep, and the most years it can keep it. Maximums in state law or the plan; a zone can keep less.</p><div class="cols2"><div><b style="font-family:Arial">Share of tax growth kept</b><div class="hb"><div class="lab">Convention center zone<small>S.B. 26 (2025)</small></div><div class="tr" title="Convention center zone: 100%"><div class="fl " style="width:66.00%"></div><span class="v">100%</span></div><div class="lab">Housing and transit zone, commuter rail<small>S.B. 140 (2022)</small></div><div class="tr" title="Housing and transit zone, commuter rail: 80%"><div class="fl " style="width:52.80%"></div><span class="v">80%</span></div><div class="lab">Housing and transit zone, light rail or bus<small>S.B. 140 (2022)</small></div><div class="tr" title="Housing and transit zone, light rail or bus: 80%"><div class="fl " style="width:52.80%"></div><span class="v">80%</span></div><div class="lab">MIDA project area<small>S.B. 269 (2019)</small></div><div class="tr" title="MIDA project area: 75%"><div class="fl " style="width:49.50%"></div><span class="v">75%</span></div><div class="lab">Inland Port, West Weber plan<small>project area plan</small></div><div class="tr" title="Inland Port, West Weber plan: 75%"><div class="fl " style="width:49.50%"></div><span class="v">75%</span></div><div class="lab">Home ownership zone<small>S.B. 168 (2024)</small></div><div class="tr" title="Home ownership zone: 60%"><div class="fl " style="width:39.60%"></div><span class="v">60%</span></div></div></div><div><b style="font-family:Arial">Years</b><div class="hb"><div class="lab">Convention center zone<small>S.B. 26 (2025)</small></div><div class="tr" title="Convention center zone: 30 years"><div class="fl navy" style="width:49.50%"></div><span class="v">30 years</span></div><div class="lab">Housing and transit zone, commuter rail<small>S.B. 140 (2022)</small></div><div class="tr" title="Housing and transit zone, commuter rail: 25 years"><div class="fl navy" style="width:41.25%"></div><span class="v">25 years</span></div><div class="lab">Housing and transit zone, light rail or bus<small>S.B. 140 (2022)</small></div><div class="tr" title="Housing and transit zone, light rail or bus: 15 years"><div class="fl navy" style="width:24.75%"></div><span class="v">15 years</span></div><div class="lab">MIDA project area<small>S.B. 269 (2019)</small></div><div class="tr" title="MIDA project area: 25 years (+15 possible)"><div class="fl navy" style="width:41.25%"></div><span class="v">25 years (+15 possible)</span></div><div class="lab">Inland Port, West Weber plan<small>project area plan</small></div><div class="tr" title="Inland Port, West Weber plan: 25 years"><div class="fl navy" style="width:41.25%"></div><span class="v">25 years</span></div><div class="lab">Home ownership zone<small>S.B. 168 (2024)</small></div><div class="tr" title="Home ownership zone: 15 years"><div class="fl navy" style="width:24.75%"></div><span class="v">15 years</span></div></div></div></div><div class=vsrc>Source: bill text read on le.utah.gov, Oct. 2026; West Weber project area plan (Inland Port).</div></figure>
+
+<p>All of these use <strong>tax increment financing (TIF)</strong> or a special levy. With TIF, the property value in an area is frozen at a starting year. As the area grows, part of the new property tax goes to the project, not to the county, schools, fire and water districts that would otherwise get it. None of these tools raises anyone's rate, so none triggers a Truth in Taxation notice. A PID or IFD can add its own levy or assessment, paid by property owners inside its boundary.</p>
+<div class="tablewrap"><table class="xg"><tr><th>Tool</th><th>Law</th><th>Who creates it</th><th>Public vote?</th><th>What it keeps or charges</th><th>In Weber County (records found)</th></tr>
+<tr><td><b>CRA / RDA</b><br>Community reinvestment agency (formerly redevelopment agency)</td><td>Title 17C; renamed in 2016; S.B. 6001 (2020) and S.B. 65 (2021) above</td><td>A city or county's agency, with agreements from the taxing bodies that share growth</td><td class="no">No</td><td>A share of growth in a project area for a set number of years</td><td>Ogden RDA (seven areas extended two years, citing Covid-19); Weber County CRA (Chromalox; Nordic Village, 75% county share for 15 years); Marriott-Slaterville CRA; Farr West Landing CRA (Weber Fire District, Aug. 2025)</td></tr>
+<tr><td><b>PID</b><br>Public infrastructure district</td><td>S.B. 228 (2019, primary sponsor Sen. Daniel McCay); S.B. 179 (2020); S.B. 37 (2021)</td><td>A city or county, on petition of 100% of surface owners (and any registered voters living there)</td><td class="no">No election</td><td>Its own property tax up to .015 (more for general obligation bonds); bonds up to 40 years</td><td>Nordic Village PIDs ($39.38 million in bonds); Mount Ogden PIDs (Snowbasin); Promontory Commerce Center PIDs; Lomond Heights PIDs (Harrisville, hearing Mar. 2026)</td></tr>
+<tr><td><b>IFD</b><br>Infrastructure financing district</td><td>H.B. 13 (2024)</td><td>A city or county, on petition of 100% of surface owners</td><td class="no">No; the election rule does not apply</td><td>Assessments on lots inside the district; assessment bonds</td><td>Brook View IFD: 37 acres, 114 lots, bonds up to $15.711 million (Dec. 2025 ordinance)</td></tr>
+<tr><td><b>MIDA project area</b></td><td>MIDA Act (2007); S.B. 269 (2019) and others above</td><td>MIDA board</td><td class="no">No</td><td>Up to 75% of growth for 25 + 15 years; MIDA PIDs; MIDA's own sales, room and energy taxes</td><td>Falcon Hill project area at Hill Air Force Base. State law gives a Weber County commissioner a seat on the MIDA board</td></tr>
+<tr><td><b>Inland Port project area</b></td><td>S.B. 234 (2018); H.B. 433 (2019)</td><td>Inland Port Authority board</td><td class="no">No</td><td>75% of growth for 25 years (West Weber plan)</td><td>West Weber, about 8,968 acres (May 2024; Amendment 1, June 2026)</td></tr>
+<tr><td><b>HTRZ</b><br>Housing and transit reinvestment zone</td><td>S.B. 217 (2021); S.B. 140 (2022)</td><td>City or county; state committee approves</td><td class="no">No</td><td>Up to 80% of growth near a transit station: 25 years (commuter rail) or 15 years (light rail and bus rapid transit); 60% at some bus stops</td><td>None found</td></tr>
+<tr><td><b>HOPZ / FHIZ</b><br>Home ownership and first-home zones</td><td>S.B. 168 and S.B. 268 (2024)</td><td>City; FHIZ also needs the state committee</td><td class="no">No</td><td>60% of growth to the city or county for up to 15 years (HOPZ)</td><td>West Haven discussed a 4.5-acre HOPZ (Feb. 2026); no action found</td></tr>
+<tr><td><b>Convention center, sports venue and Fairpark zones</b></td><td>S.B. 26 (2025); S.B. 333 (2025); H.B. 562 (2024)</td><td>State committee or district board</td><td class="no">No</td><td>Growth plus a share of state sales tax, 30 to 40 years. Convention center zone: 100% of property tax growth for 30 years</td><td>None in Weber County</td></tr>
+<tr><td><b>RSDZ</b><br>Regionally significant development zone</td><td>H.B. 507 (2026); no new HTRZ, FHIZ, HOPZ or convention zones after Jan. 1, 2028</td><td>Not confirmed in the text read</td><td class="mid">Not confirmed</td><td>Other bodies may give up to 70% of property tax growth and up to 100% of personal property tax growth (fiscal note)</td><td>None found</td></tr>
+<tr><td><b>Energy development zone</b></td><td>H.B. 249 (2025)</td><td>Utah Energy Council</td><td class="no">No</td><td>Property tax growth to the Energy Council for distribution</td><td>None designated</td></tr>
+</table></div>
+<div class="facts">
+  <div><strong>How many:</strong> 185 PIDs and 24 IFDs reported bonds to the State Treasurer's 2025 debt study (Nov. 2025). The State Auditor counted 221 PIDs, 71 with debt (KPCW, Aug. 25, 2026), and put PID debt at $5,267,000,000 as of Aug. 7, 2026. Legislative staff counted 10 IFDs created in 2024 and 17 in 2025.</div>
+  <div><strong>What isn't measured:</strong> no statewide record found adds up how much growth all CRAs, zones and authorities keep each year, or what each county, school district or fire district gives up.</div>
+</div>
+
+<h2 id="growth">Growth sent to zones in Weber County</h2>
+<p>These agreements don't raise a rate. They commit a share of future property tax growth to a project. From the Hive's Transparency case files:</p>
+<div class="tablewrap"><table class="xg"><tr><th>When</th><th>What</th><th>Who approved it</th></tr>
+<tr><td class="c">Nov. 2022</td><td>Mount Ogden PIDs created for Snowbasin</td><td>County Commission, 3–0</td></tr>
+<tr><td class="c">June 2023</td><td>Promontory Commerce Center PIDs created</td><td>County Commission, 3–0</td></tr>
+<tr><td class="c">2023</td><td>Chromalox CRA (county, school and fire districts later agreed to share growth)</td><td>County and the taxing bodies</td></tr>
+<tr><td class="c">May 2024</td><td>Utah Inland Port Authority adopts its West Weber project area, about 8,968 acres (power from S.B. 234, 2018)</td><td>Inland Port board, after the County Commission's 3–0 request (Jan. 2024)</td></tr>
+<tr><td class="c">Nov.–Dec. 2024</td><td>Nordic Village PIDs and CRA: the county shares 75% of its growth; the school, fire and water districts 50%, for 15 years</td><td>County Commission, 3–0; each taxing body</td></tr>
+<tr><td class="c">Aug. 2025</td><td>Farr West Landing CRA agreement</td><td>Weber Fire District board</td></tr>
+</table></div>
+<p class="note">The increase notices reviewed give pay, staffing, inflation, required upgrades and new buildings as reasons. None ties an increase to growth sharing. For most of these projects, sharing has only just begun or starts in 2027.</p>
+
+<div class="nextpage">Next: <a href="weber-county-taxes-2026.html"><b>Weber County in 2026</b></a>: The new sales tax and property tax increases.</div>
+
+<h2 id="words">Words to know</h2>
+<p>Tap a card to see what it means.</p>
+<div class="flips">
+  <button class="flip" aria-expanded="false"><div class="ft">Local option tax</div><div class="fh">Tap to see</div><div class="fd">A tax the Legislature allows but doesn't impose. A city, county or district decides whether to adopt it.</div></button>
+  <button class="flip" aria-expanded="false"><div class="ft">Certified tax rate</div><div class="fh">Tap to see</div><div class="fd">The property tax rate that brings in about the same money as last year, not counting new buildings. Going above it requires Truth in Taxation.</div></button>
+  <button class="flip" aria-expanded="false"><div class="ft">Truth in Taxation</div><div class="fh">Tap to see</div><div class="fd">Utah's rule that a body wanting more property tax than the certified rate brings in must mail notice and hold a public hearing before it votes.</div></button>
+  <button class="flip" aria-expanded="false"><div class="ft">Tax increment</div><div class="fh">Tap to see</div><div class="fd">The growth in property tax above a frozen starting value in a zone. Part of it goes to the zone's project instead of the usual taxing bodies.</div></button>
+  <button class="flip" aria-expanded="false"><div class="ft">PID</div><div class="fh">Tap to see</div><div class="fd">Public infrastructure district: a district, often requested by a developer, that can levy property tax or assessments and issue bonds for roads, water and sewer inside its boundary.</div></button>
+  <button class="flip" aria-expanded="false"><div class="ft">Referendum</div><div class="fh">Tap to see</div><div class="fd">A citizen petition that puts a local decision, such as a tax increase, on the ballot so voters can keep or reverse it.</div></button>
+</div>
+
+<h2 id="ask">Questions to ask, and whom to ask</h2>
+<div class="qa">
+  <div><b>Your state representative and senator</b>When you give a local body the power to tax without a public vote, what notice do households get? Would you require a ballot question or a household cost estimate for new local sales taxes?</div>
+  <div><b>Your county commission</b>How much of the new 0.2% sales tax goes to each purpose each year, and where is that reported? Was a ballot opinion question considered?</div>
+  <div><b>Your city council, school board and district boards</b>How much property tax growth does your body share with PIDs, CRAs or the Inland Port, for how long, and what services does that growth area still need from you?</div>
+  <div><b>The Utah State Tax Commission</b>Which counties and cities have adopted each local option tax the Legislature has authorized since 2015, and what each collected last year?</div>
+</div>
+
+<h2 id="related">Connected Hive work</h2>
+<div class="pages">
+  <a href="utah-tax-cuts-and-increases.html"><b>Tax Cuts and Tax Increases</b><span>The overview: 135 laws, year by year.</span></a>
+  <a href="utah-tax-cuts-2015-2026.html"><b>The tax cuts, 2015–2026</b><span>Who got relief, how much, and how it's paid for.</span></a>
+  <a href="utah-tax-bills-2015-2026.html"><b>The 62 tax increases</b><span>Every law that raised a tax or fee, or gave taxing power.</span></a>
+  <a href="https://weber-county-hive.github.io/Transparency/weber-county-tax-increases-since-2019.html"><b>Every Weber County Property Tax Increase Since 2019</b><span>Transparency case file.</span></a>
+  <a href="https://weber-county-hive.github.io/Transparency/weber-hive-5th5th-sales-tax.html"><b>Weber County's New Sales Tax</b><span>Transparency case file.</span></a>
+  <a href="https://weber-county-hive.github.io/PIDS-Utah/"><b>PIDS-Utah</b><span>Public infrastructure districts, their debt and who repays it.</span></a>
+</div>
+
+<h2 id="sources">Sources</h2>
+<details class="box"><summary>Main sources and how they were read</summary><div class="in"><ul>
+  <li>Bill text, status pages and fiscal notes, le.utah.gov. Each law's "who decides" and "public vote" entries come from the bill text or fiscal note where we read it; where we didn't, the entry says "Not confirmed."</li>
+  <li>2026 Truth in Taxation list (Utah Taxpayers Association), as published by Utah News Dispatch: <a href="https://utahnewsdispatch.com/wp-content/uploads/2026/08/2026-Truth-in-Taxation-list-Sheet1-2.pdf">PDF</a>; <a href="https://utahnewsdispatch.com/?p=18994">Utah News Dispatch, Aug. 4, 2026</a>; <a href="https://www.ksl.com/article/51606015">KSL</a>.</li>
+  <li>Weber County: <a href="https://www.webercountyutah.gov/Clerk_Auditor/documents/2026FY%20Notice%20of%20Proposed%20Tax%20Increases.pdf">2026 combined notice of proposed tax increases</a>; <a href="https://webercountyutah.gov/news/post.php?id=292">county announcement of the 0.20% sales tax</a>; <a href="https://www.standard.net/news/2026/jul/06/weber-county-approves-20-sales-and-use-tax-for-public-safety-transportation/">Standard-Examiner, July 6, 2026</a>; <a href="https://www.ksl.com/article/51536635/as-many-cities-mull-property-tax-hikes-weber-county-oks-02-sales-tax-increase">KSL, June 2026</a>.</li>
+  <li>Roy: <a href="https://www.utah.gov/pmn/files/1490337.pdf">Aug. 11, 2026 council minutes</a>; <a href="https://www.utah.gov/pmn/files/1483635.pdf">Weber County sample ballot, Prop 10</a>; <a href="https://www.ksl.com/article/51608949/roy-leaders-ok-scaled-back-3425-tax-hike-foes-plan-challenge-to-halt-it">KSL, Aug. 12, 2026</a>.</li>
+  <li>Ogden Valley: <a href="https://www.deseret.com/utah/2026/08/20/ogden-valley-leaders-ok-5126-tax-hike-but-utah-supreme-court-still-has-to-weigh-in/">Deseret News, Aug. 20, 2026</a>.</li>
+  <li>Salt Lake City: <a href="https://kutv.com/news/2news-investigates/police-win-over-potholes-local-tax-gives-four-times-the-money-to-slcpd-than-street-repair">KUTV on the 0.5% "Funding Our Future" tax</a>; <a href="https://utahnewsdispatch.com/?p=6075">Utah News Dispatch, Oct. 2, 2024, Delta Center sales tax</a>.</li>
+  <li>Washington County EMS tax: <a href="https://kutv.com/news/eye-on-your-money/new-utah-law-swaps-funding-resources-for-emergency-services-statewide">KUTV, Oct. 15, 2025</a>.</li>
+  <li>2025 denials: <a href="https://www.ksl.com/article/51384007/utah-tax-officials-deny-tax-hikes-from-35-cities-school-districts-and-other-entities">KSL, Oct. 2025</a>.</li>
+  <li>Weber County growth-sharing agreements, commission votes and the $255.42 estimate: the Hive's Transparency case files and PID tracker, linked above.</li>
+</ul></div></details>
+<details class="box"><summary>Local adoptions, zones and districts (searched Oct. 16, 2026)</summary><div class="in"><ul><li><a href="https://www.constructionequipmentguide.com/voters-in-10-utah-counties-elect-to-pass-proposition-1/26713">Prop 1 results, 2015 (Construction Equipment Guide)</a></li><li><a href="https://www.cyclingwest.com/advocacy/2015-guide-to-cycling-related-ballot-measures-in-utah/">Prop 1 county list (CyclingWest)</a></li><li><a href="https://www.ksl.com/article/37405517/prop-1-officially-fails-in-salt-lake-county">KSL, Nov. 17, 2015, Prop 1 fails in Salt Lake County</a></li><li><a href="https://www.ksl.com/article/news/utah/cities-support-salt-lake-county-transit-tax-clearing-way-for-it-to-take-effect-fund-transit-projects/46346007">KSL, June 19, 2018, Salt Lake County transit tax</a></li><li><a href="https://wfrc.utah.gov/PublicInvolvement/GovernmentalAffairs/SB136/LocalOptionSalesTaxChartByCounty.pdf">WFRC local option sales tax chart by county (1/14/2019)</a></li><li><a href="https://kutv.com/news/local/utah-county-passes-quarter-cent-sales-tax">KUTV, Dec. 20, 2018, Utah County quarter-cent tax</a></li><li><a href="https://www.upr.org/utah-news/2018-05-09/cache-county-officials-approve-sales-tax-increase">UPR, May 9, 2018, Cache County tax</a></li><li><a href="https://files.tax.utah.gov/tax/bulletin/tb-02-23.pdf">Tax Commission Bulletin 02-23 (Morgan County)</a></li><li><a href="https://www.ksl.com/article/news/utah/counties/northern/why-tax-repeal-in-3-cities-wont-change-plans-to-expand-frontrunner-into-box-elder-county/50815672">KSL, Dec. 11, 2023 (Box Elder County)</a></li><li><a href="https://www.kuer.org/news/2018-05-01/slc-council-votes-to-enact-half-percent-sales-tax">KUER, May 1, 2018, Salt Lake City half-percent tax</a></li><li><a href="https://www.kpcw.org/summit-county/2018-06-28/summit-county-council-implements-new-transit-tax">KPCW, June 28, 2018, Summit County transit taxes</a></li><li><a href="https://files.tax.utah.gov/tax/bulletin/tb-15-23.pdf">Tax Commission Bulletin 15-23 (Utah County 0.2%)</a></li><li><a href="https://www.saltlakecounty.gov/newsroom/salt-lake-county-council-acts-to-address-jail-overcrowding-and-countywide-transportation-needs/">Salt Lake County release, Feb. 11, 2025</a></li><li><a href="https://www.utah.gov/pmn/files/1495455.pdf">Davis County Commission minutes, Sept. 15, 2026 (Ordinance 2026-0006)</a></li><li><a href="https://wfrc.utah.gov/PublicInvolvement/GovernmentalAffairs/2026/Davis_5th5th_Materials.pdf">WFRC Davis 5th5th materials</a></li><li><a href="https://files.tax.utah.gov/tax/salestax/rate/26q4combined.pdf">Tax Commission rate chart, Oct. 1, 2026</a></li><li><a href="https://files.tax.utah.gov/tax/bulletin/tb-10-21.pdf">Tax Commission Bulletin 10-21 (OHV/RV rental tax, Grand County)</a></li><li><a href="https://tax.utah.gov/bulletin/tb-06-23.pdf">Tax Commission Bulletin 06-23 (Washington County)</a></li><li><a href="https://tax.utah.gov/bulletin/tb-12-23.pdf">Tax Commission Bulletin 12-23 (Wasatch County)</a></li><li><a href="https://files.tax.utah.gov/tax/bulletin/tb-13-25.pdf">Tax Commission Bulletin 13-25 (county room tax, 20 counties)</a></li><li><a href="https://files.tax.utah.gov/tax/bulletin/tb-21-25.pdf">Tax Commission Bulletin 21-25 (county room tax, 5 counties)</a></li><li><a href="https://www.heraldextra.com/news/2025/jun/27/utah-county-commission-approves-increase-of-transient-room-tax-by-25/">Daily Herald, June 27, 2025 (Utah County room tax)</a></li><li><a href="https://www.hjnews.com/news/government/cache-county-passes-increased-transient-room-tax-and-recognizes-outgoing-fire-chief/article_b065745b-c79b-4e95-b79c-b2a934074130.html">Herald Journal, June 25, 2025 (Cache County room tax)</a></li><li><a href="https://www.utah.gov/pmn/files/1357637.pdf">Hurricane Valley Fire SSD minutes, Nov. 3, 2025</a></li><li><a href="https://www.utah.gov/pmn/files/1419045.pdf">Washington City minutes, Mar. 25, 2026</a></li><li><a href="https://www.utah.gov/pmn/files/1439745.pdf">Santa Clara minutes, Apr. 22, 2026</a></li><li><a href="https://www.sltrib.com/news/2026/10/02/st-george-passes-33-emergency/">Salt Lake Tribune, Oct. 2, 2026 (St. George)</a></li><li><a href="https://www.kuer.org/politics-government/2024-10-01/slc-council-passes-0-5-sales-tax-for-downtown-sports-entertainment-overhaul">KUER, Oct. 1, 2024 (Delta Center tax)</a></li><li><a href="https://tax.utah.gov/bulletin/tb-23-24.pdf">Tax Commission Bulletin 23-24 (Salt Lake City rate)</a></li><li><a href="https://www.sltrib.com/news/2024/10/04/rocky-anderson-wont-pursue/">Salt Lake Tribune, Oct. 4, 2024 (referendum dropped)</a></li><li><a href="https://pf.utleg.gov/public-web/sessions/2026GS/fiscal-notes/HB0507S03.fn.html">H.B. 507 fiscal note (energy excise tax)</a></li><li><a href="https://propertytax.utah.gov/tax-rates/approved-rates/budgetratesbyentity2025.pdf">Tax Commission approved rates, 2025 (Davis animal welfare levy)</a></li><li><a href="https://standard.net/news/local/2024/oct/23/weber-countys-animal-shelter-grapples-with-full-kennels-lack-of-revenue">Standard-Examiner, Oct. 23, 2024 (Weber animal shelter)</a></li><li><a href="https://le.utah.gov/~2020S6/bills/sbillenr/SB6001.pdf">S.B. 6001 enrolled text</a></li><li><a href="https://www.ogdencity.gov/DocumentCenter/View/26241/RDA-FY22-Annual-Report-PDF">Ogden RDA FY22 annual report</a></li><li><a href="https://meetings.boardbook.org/Documents/DownloadPDF/1a260bef-64dd-4282-9dfa-c759627d2a3f?org=1523">Marriott-Slaterville CRA draft agreement with Weber School District</a></li><li><a href="https://le.utah.gov/interim/2025/pdf/00002888.pdf">GOEO HTRZ status, June 18, 2025</a></li><li><a href="https://www.utah.gov/pmn/files/1216587.pdf">HTRZ committee minutes, Farmington, July 9, 2024</a></li><li><a href="https://www.utah.gov/pmn/files/1344401.pdf">West Jordan Ordinance 25-55 (HOPZ)</a></li><li><a href="https://www.utah.gov/pmn/files/1395949.pdf">West Haven work session packet, Feb. 18, 2026 (HOPZ)</a></li><li><a href="https://www.utah.gov/pmn/files/1317737.pdf">Convention center zone minutes, Apr. 4, 2025</a></li><li><a href="https://www.kpcw.org/summit-county/2025-11-13/new-sales-tax-coming-to-unincorporated-summit-county">KPCW, Nov. 13, 2025 (Summit County Impacted Communities Tax)</a></li><li><a href="https://www.utah.gov/pmn/files/1407747.pdf">Inland Port Resolution 2026-08 (energy zones)</a></li><li><a href="https://le.utah.gov/interim/2026/pdf/00003178.pdf">Legislative staff memo, Aug. 19, 2026 (IFD counts)</a></li><li><a href="https://www.utah.gov/pmn/files/1464193.pdf">Sawmill IFD bond requisition</a></li><li><a href="https://www.utah.gov/pmn/files/1370769.pdf">Brook View IFD ordinance, Dec. 12, 2025</a></li><li><a href="https://www.utah.gov/pmn/files/1451715.pdf">UFAIR Resolution 2026-03 (Power District PIDs)</a></li><li><a href="https://www.standard.net/news/business/2024/may/20/utah-inland-port-authority-votes-to-adopt-west-weber-project-area-plan/">Standard-Examiner, May 20, 2024 (West Weber project area)</a></li><li><a href="https://www.utah.gov/pmn/files/1456191.pdf">West Weber project area plan, Amendment 1</a></li><li><a href="https://static1.squarespace.com/static/68fa79dd76f6c50e5cc4bf18/t/6ac6b6ab6950da30357c3af3/1791407787765/2026+Audited+Financials.pdf">MIDA FY2026 audited financials</a></li><li><a href="https://www.utah.gov/pmn/files/1478015.pdf">MIDA board deck, Aug. 2026</a></li><li><a href="https://files.tax.utah.gov/propertytax/legislation/2019legislation.pdf">Utah State Tax Commission, 2019 property tax legislation summary, p. 8 (S.B. 269)</a></li><li><a href="https://www.gohebervalley.com/mida-mayflower-resort/">Heber Valley tourism page on MIDA and Mayflower (no author or date)</a></li><li><a href="https://www.wasatchcounty.gov/jordanelle">Wasatch County, Jordanelle history page</a></li><li><a href="https://law.justia.com/codes/utah/">Utah Code 59-12-402.1, 59-12-402.5, 59-12-603, 59-12-2302, 11-46-104, 63H-1-501, 17B-1-214 (Justia, 2025 code)</a></li><li><a href="https://treasurer.utah.gov/wp-content/uploads/2025-Debt-Affordability-Study_Released-November-1.pdf">State Treasurer, 2025 Debt Affordability Study</a></li></ul><p>Read through web-page text or PDF text extraction. Tax Commission rate charts lose blank cells in extraction, so which county column a rate sits in is our reading.</p></div></details>
+<p class="srcline">Public records only. No comment requested.</p>
+<footer>The Weber County Hive · Utah Hive Politics · Questions or corrections: <a href="mailto:webercountyhive@gmail.com">webercountyhive@gmail.com</a></footer>
+</div>
+<script>document.querySelectorAll('.flip').forEach(f=>f.addEventListener('click',()=>f.setAttribute('aria-expanded',f.getAttribute('aria-expanded')==='true'?'false':'true')));</script>
+</body></html>
