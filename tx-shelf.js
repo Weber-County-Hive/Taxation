@@ -63,6 +63,11 @@ var HBX = {
       "name": "The $1.4 Million Assumption: Why Ogden Valley's City Budget Departed From Its Incorporation Forecast"
     },
     {
+      "callNumber": "TX 100.10",
+      "slug": "utah-sb20-telecom-tax-shift",
+      "name": "S.B. 20: The 2022 Telecom Tax Change Analysts Estimated Could Shift $19 Million a Year"
+    },
+    {
       "callNumber": "TX 200.01",
       "slug": "quiet-machine",
       "name": "The Quiet Machine"
