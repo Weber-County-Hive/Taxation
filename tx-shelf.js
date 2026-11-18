@@ -58,6 +58,11 @@ var HBX = {
       "name": "The Grand Hyatt Deer Valley: A MIDA-Owned Hotel, Its Tax Bill and Its Lease"
     },
     {
+      "callNumber": "TX 100.09",
+      "slug": "ogden-valley-1-4-million-assumption",
+      "name": "The $1.4 Million Assumption: Why Ogden Valley's City Budget Departed From Its Incorporation Forecast"
+    },
+    {
       "callNumber": "TX 200.01",
       "slug": "quiet-machine",
       "name": "The Quiet Machine"
